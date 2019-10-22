@@ -42,6 +42,8 @@ public class Configuration {
         animal.setAge(Integer.parseInt(tempMap.get("age")));
         animal.setPrice(Double.parseDouble(tempMap.get("price")));
         animal.setSex(tempMap.get("sex").equals("true") ? true : false);
+        animal.setGenus(tempMap.get("genus"));
+        animal.setSpecies(tempMap.get("species"));
         animal.getAnimalSpecifications().setLoud(tempMap.get("isLoud").equals("true") ? true : false);
         animal.getAnimalSpecifications().setCityLivingAble(tempMap.get("cityLivingAble").equals("true") ? true : false);
         animal.getAnimalSpecifications().setSize(Double.parseDouble(tempMap.get("size")));
@@ -112,6 +114,23 @@ public class Configuration {
     public int getAnimalsCountInMap() {
         int eachAnimalLinesCountInProp = 3;
         return map != null && map.size() > 0 ? map.size() / eachAnimalLinesCountInProp : 0;
+    }
+
+    public static void log(String message) {
+        PrintWriter out = null;
+        try {
+            out = new PrintWriter(
+                    new FileWriter(
+                            System.getProperty("user.dir").
+                                    concat("\\zoo\\log\\log_".
+                                            concat(String.valueOf(new Date().getTime())).
+                                            concat(".log"))), true);
+            out.write(message);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            out.close();
+        }
     }
 
 }

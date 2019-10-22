@@ -2,6 +2,8 @@ package org.btarikool.javacourse;
 
 public abstract class Animal {
     private String nick;
+    private String genus;
+    private String species;
     private int id;
     private static int idCounter = 0;
     private int age;
@@ -59,6 +61,22 @@ public abstract class Animal {
 
     public void setSex(boolean sex) {
         this.sex = sex;
+    }
+
+    public String getGenus() {
+        return genus;
+    }
+
+    public void setGenus(String genus) {
+        this.genus = genus;
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(String species) {
+        this.species = species;
     }
 
     public AnimalSpecifications getAnimalSpecifications() {

@@ -28,6 +28,58 @@ public class PetShop {
         }
 
                 );
+
+        printAnimalFilteredBySpecies("BoNy");
+    }
+
+    public static void printAnimalListById() {
+        animalsList.stream().
+                sorted(Comparator.comparingInt(Animal::getId)).
+                forEach(animal -> System.out.println(animal.getId()));
+    }
+
+    public static void printAnimalListByNick() {
+        animalsList.stream().
+                sorted(Comparator.comparing(Animal::getNick)).
+                forEach(animal -> System.out.println(animal.getNick()));
+    }
+
+    public static void printAnimalListByPriceLowestFirst() {
+        animalsList.stream().
+                sorted(Comparator.comparingDouble(Animal::getPrice)).
+                forEach(animal -> System.out.println(animal.getPrice()));
+    }
+
+    public static void printAnimalListByPriceHighestFirst() {
+        animalsList.stream().
+                sorted(Comparator.comparingDouble(Animal::getPrice).reversed()).
+                forEach(animal -> System.out.println(animal.getPrice()));
+    }
+
+    public static void printAnimalListByGenus() {
+        animalsList.stream().
+                sorted(Comparator.comparing(Animal::getGenus)).
+                forEach(animal -> System.out.println(animal.getGenus()));
+    }
+
+    public static void printAnimalListBySpecies() {
+        animalsList.stream().
+                sorted(Comparator.comparing(Animal::getSpecies)).
+                forEach(animal -> System.out.println(animal.getSpecies()));
+    }
+
+    public static void printAnimalFilteredByGenus(String genus) {
+        animalsList.stream().
+                filter(a -> a.getGenus().toLowerCase().equals(genus.toLowerCase())).
+                sorted(Comparator.comparing(Animal::getGenus)).
+                forEach(System.out::println);
+    }
+
+    public static void printAnimalFilteredBySpecies(String species) {
+        animalsList.stream().
+                filter(a -> a.getSpecies().toLowerCase().equals(species.toLowerCase())).
+                sorted(Comparator.comparing(Animal::getSpecies)).
+                forEach(a -> Configuration.log(a.toString()));
     }
 
     public static Animal getAnimalById(int id) {
