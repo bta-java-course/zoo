@@ -1,11 +1,15 @@
 package org.btarikool.javacourse;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class AnimalSpecifications {
     private boolean isLoud;
     private double size;
     private boolean cityLivingAble;
     private int livingYears;
-    private Allergen[] allergen;
+    private List<Allergen> allergens = new ArrayList<>();
     private Psychotype psychotype;
 
     public boolean isLoud() {
@@ -40,19 +44,22 @@ public class AnimalSpecifications {
         this.livingYears = livingYears;
     }
 
-    public Allergen[] getAllergen() {
-        return allergen;
+    public List<Allergen> getAllergens() {
+        return allergens;
     }
 
-    public void setAllergen(Allergen ... allergen) {
-        this.allergen = allergen;
+    public void setAllergens(String ... allergen) {
+        if (allergen.length > 0 && !allergen[0].equals(""))
+        Arrays.stream(allergen).
+                forEach(a -> this.allergens.add(Allergen.valueOf(a)));
+        else return;
     }
 
     public Psychotype getPsychotype() {
         return psychotype;
     }
 
-    public void setPsychotype(Psychotype psychotype) {
-        this.psychotype = psychotype;
+    public void setPsychotype(String psychotype) {
+        this.psychotype = Psychotype.valueOf(psychotype);
     }
 }

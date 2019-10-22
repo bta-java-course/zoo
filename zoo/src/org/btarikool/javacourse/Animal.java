@@ -9,6 +9,12 @@ public abstract class Animal {
     private boolean sex;
     private AnimalSpecifications animalSpecifications;
 
+    public Animal() {
+        this.id = idCounter;
+        idCounter++;
+        this.animalSpecifications = new AnimalSpecifications();
+    }
+
     public Animal(String nick, int age, double price, boolean sex) {
         this.nick = nick;
         this.id = idCounter;
@@ -29,10 +35,6 @@ public abstract class Animal {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getAge() {
@@ -61,9 +63,5 @@ public abstract class Animal {
 
     public AnimalSpecifications getAnimalSpecifications() {
         return animalSpecifications;
-    }
-
-    public void setAnimalSpecifications(AnimalSpecifications animalSpecifications) {
-        this.animalSpecifications = animalSpecifications;
     }
 }

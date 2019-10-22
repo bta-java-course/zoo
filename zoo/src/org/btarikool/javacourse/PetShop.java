@@ -1,22 +1,33 @@
 package org.btarikool.javacourse;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
+import org.btarikool.javacourse.genus.Bird;
+import org.btarikool.javacourse.genus.species.Parrot;
+
+import javax.swing.*;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class PetShop {
 
     private static List<Animal> animalsList = new ArrayList<>();
+    private static List<Customer> customersList = new ArrayList<>();
 
     public static void main(String[] args) {
-        SubSpecies s = new SubSpecies("Andrei", 1, 2.5d, true);
-        SubSpecies s2 = new SubSpecies("Vasja", 1, 2.5d, true);
-        animalsList.add(s);
-        animalsList.add(s2);
-        System.out.println(s.getId());
-        System.out.println(s2.getId());
-        s.getAnimalSpecifications().setAllergen(Allergen.DANDRUFF, Allergen.SALVIA, Allergen.URINE);
-        System.out.println(getAnimalById(0).getNick());
+        Configuration configuration = new Configuration();
+        configuration.fillAnimalsList(animalsList);
+        animalsList.stream().forEach(a ->
+        {
+            System.out.println(a.getId() + " "
+                    + a.getAge() + " "
+                    + a.getNick() + " "
+                    + a.getAnimalSpecifications().getLivingYears() + " "
+                    + a.getAnimalSpecifications().getSize() + " "
+                    + a.getAnimalSpecifications().getPsychotype() + " "
+                    + a.getAnimalSpecifications().getAllergens() + " "
+            );
+        }
+
+                );
     }
 
     public static Animal getAnimalById(int id) {
@@ -28,4 +39,5 @@ public class PetShop {
             return null;
         }
     }
+
 }
