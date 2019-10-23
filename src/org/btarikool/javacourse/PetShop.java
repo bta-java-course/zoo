@@ -9,5 +9,7 @@ public class PetShop {
     public static void main(String[] args) {
         List<Animal> animals = Settings.getAnimals();
         System.out.println(animals);
+        Report report = new Report();
+        report.toFile(animals, "animals");
     }
 }

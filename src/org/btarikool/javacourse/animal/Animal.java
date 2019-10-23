@@ -28,4 +28,13 @@ public abstract class Animal {
     public void setSex(String sex) {
         this.sex = sex;
     }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "nick='" + nick + '\'' +
+                ", price=" + price +
+                ", sex='" + sex + '\'' +
+                '}';
+    }
 }
