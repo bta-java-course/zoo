@@ -1,11 +1,6 @@
 package org.btarikool.javacourse;
 
-import org.btarikool.javacourse.genus.Bird;
-import org.btarikool.javacourse.genus.species.Parrot;
-
-import javax.swing.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class PetShop {
 
@@ -13,8 +8,10 @@ public class PetShop {
     private static List<Customer> customersList = new ArrayList<>();
 
     public static void main(String[] args) {
-        Configuration configuration = new Configuration();
-        configuration.fillAnimalsList(animalsList);
+
+
+
+        Configuration.fillAnimalsList(animalsList);
         animalsList.stream().forEach(a ->
         {
             System.out.println(a.getId() + " "
@@ -26,10 +23,10 @@ public class PetShop {
                     + a.getAnimalSpecifications().getAllergens() + " "
             );
         }
-
                 );
 
-        printAnimalFilteredBySpecies("BoNy");
+        Customer customer = new Customer(customersList);
+
     }
 
     public static void printAnimalListById() {

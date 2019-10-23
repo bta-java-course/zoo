@@ -25,11 +25,11 @@ public class Configuration {
         }
     }
 
-    public Configuration() {
+    private Configuration() {
 
     }
 
-    public void fillAnimalsList(List<Animal> list) {
+    public static void fillAnimalsList(List<Animal> list) {
         Map<String, String> tempMap = createNextAnimalMap();
         Animal animal = getSpeciesClass(tempMap);
         newAnimalInitialisation(tempMap, animal);
@@ -37,7 +37,7 @@ public class Configuration {
         while (getAnimalsCountInMap() > 0) fillAnimalsList(list);
     }
 
-    private void newAnimalInitialisation(Map<String, String> tempMap, Animal animal) {
+    private static void newAnimalInitialisation(Map<String, String> tempMap, Animal animal) {
         animal.setNick(StringUtils.capitalize(tempMap.get("nick")));
         animal.setAge(Integer.parseInt(tempMap.get("age")));
         animal.setPrice(Double.parseDouble(tempMap.get("price")));
@@ -52,7 +52,7 @@ public class Configuration {
         animal.getAnimalSpecifications().setPsychotype(tempMap.get("psychoType").toUpperCase());
     }
 
-    private Animal getSpeciesClass(Map<String, String> tempMap) {
+    private static Animal getSpeciesClass(Map<String, String> tempMap) {
         Animal animal = null;
         switch (tempMap.get("species")) {
             case "frog":
@@ -74,7 +74,7 @@ public class Configuration {
         return animal;
     }
 
-    public Map<String, String> createNextAnimalMap() {
+    private static Map<String, String> createNextAnimalMap() {
         int animalFromMap = getAnimalsCountInMap();
         Map<String, String> tempMap = new HashMap<>();
         stringToHashMap(getBasicInfoString(animalFromMap), tempMap);
@@ -83,25 +83,25 @@ public class Configuration {
         return tempMap;
     }
 
-    public String getBasicInfoString(int i) {
+    private static String getBasicInfoString(int i) {
         String basicInfo = map.get("animal." + i);
         map.remove("animal." + i);
         return basicInfo;
     }
 
-    public String getSubInfoString(int i) {
+    private static String getSubInfoString(int i) {
         String subInfo = map.get("animal." + i + ".subInfo");
         map.remove("animal." + i + ".subInfo");
         return subInfo;
     }
 
-    public String getSpecificationsString(int i) {
+    private static String getSpecificationsString(int i) {
         String specifications = map.get("animal." + i + ".specifications");
         map.remove("animal." + i + ".specifications");
         return specifications;
     }
 
-    private void stringToHashMap(String string, Map<String, String> tempMap) {
+    private static void stringToHashMap(String string, Map<String, String> tempMap) {
      Arrays.asList(string.split(";")).
              stream().map(next -> next.split(":")).
              collect(Collectors.toMap(
@@ -111,7 +111,7 @@ public class Configuration {
              forEach((a, b) -> tempMap.put(a, b));
     }
 
-    public int getAnimalsCountInMap() {
+    private static int getAnimalsCountInMap() {
         int eachAnimalLinesCountInProp = 3;
         return map != null && map.size() > 0 ? map.size() / eachAnimalLinesCountInProp : 0;
     }
