@@ -82,4 +82,17 @@ public abstract class Animal {
     public AnimalSpecifications getAnimalSpecifications() {
         return animalSpecifications;
     }
+
+    @Override
+    public String toString() {
+        return "SubInfo: " +
+                "Id:" + id +
+                ", Nick: " + nick +
+                ", Genus: " + genus +
+                ", Species: " + species +
+                ", Age: " + age +
+                ", Price: " + price +
+                ", Sex: " + sex +
+                "\n" + animalSpecifications;
+    }
 }

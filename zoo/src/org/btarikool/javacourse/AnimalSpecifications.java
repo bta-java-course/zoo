@@ -62,4 +62,15 @@ public class AnimalSpecifications {
     public void setPsychotype(String psychotype) {
         this.psychotype = Psychotype.valueOf(psychotype);
     }
+
+    @Override
+    public String toString() {
+        return "AnimalSpecifications: " +
+                "Is loud: " + isLoud +
+                ", Size: " + size +
+                ", CityLivingAble: " + cityLivingAble +
+                ", LivingYears: " + livingYears +
+                ", Allergens: " + allergens +
+                ", Psychotype: " + psychotype;
+    }
 }

@@ -1,92 +1,30 @@
 package org.btarikool.javacourse;
 
-import java.util.*;
+import org.btarikool.javacourse.genus.Genus;
+import org.btarikool.javacourse.genus.species.Species;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+import java.util.Arrays;
 
 public class PetShop {
 
-    private static List<Animal> animalsList = new ArrayList<>();
-    private static List<Customer> customersList = new ArrayList<>();
+    private static Collections collections = new Collections();
 
-    public static void main(String[] args) {
-
-
-
-        Configuration.fillAnimalsList(animalsList);
-        animalsList.stream().forEach(a ->
-        {
-            System.out.println(a.getId() + " "
-                    + a.getAge() + " "
-                    + a.getNick() + " "
-                    + a.getAnimalSpecifications().getLivingYears() + " "
-                    + a.getAnimalSpecifications().getSize() + " "
-                    + a.getAnimalSpecifications().getPsychotype() + " "
-                    + a.getAnimalSpecifications().getAllergens() + " "
-            );
-        }
-                );
-
-        Customer customer = new Customer(customersList);
-
+    static {
+        Configuration.fillAnimalsList(collections.getAnimalsList());
     }
 
-    public static void printAnimalListById() {
-        animalsList.stream().
-                sorted(Comparator.comparingInt(Animal::getId)).
-                forEach(animal -> System.out.println(animal.getId()));
-    }
-
-    public static void printAnimalListByNick() {
-        animalsList.stream().
-                sorted(Comparator.comparing(Animal::getNick)).
-                forEach(animal -> System.out.println(animal.getNick()));
-    }
-
-    public static void printAnimalListByPriceLowestFirst() {
-        animalsList.stream().
-                sorted(Comparator.comparingDouble(Animal::getPrice)).
-                forEach(animal -> System.out.println(animal.getPrice()));
-    }
-
-    public static void printAnimalListByPriceHighestFirst() {
-        animalsList.stream().
-                sorted(Comparator.comparingDouble(Animal::getPrice).reversed()).
-                forEach(animal -> System.out.println(animal.getPrice()));
-    }
-
-    public static void printAnimalListByGenus() {
-        animalsList.stream().
-                sorted(Comparator.comparing(Animal::getGenus)).
-                forEach(animal -> System.out.println(animal.getGenus()));
-    }
-
-    public static void printAnimalListBySpecies() {
-        animalsList.stream().
-                sorted(Comparator.comparing(Animal::getSpecies)).
-                forEach(animal -> System.out.println(animal.getSpecies()));
-    }
-
-    public static void printAnimalFilteredByGenus(String genus) {
-        animalsList.stream().
-                filter(a -> a.getGenus().toLowerCase().equals(genus.toLowerCase())).
-                sorted(Comparator.comparing(Animal::getGenus)).
+    public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Logger logger = new Logger();
+        collections.getAnimalsList().stream().
+                peek(a -> a.toString()).
                 forEach(System.out::println);
-    }
-
-    public static void printAnimalFilteredBySpecies(String species) {
-        animalsList.stream().
-                filter(a -> a.getSpecies().toLowerCase().equals(species.toLowerCase())).
-                sorted(Comparator.comparing(Animal::getSpecies)).
-                forEach(a -> Configuration.log(a.toString()));
-    }
-
-    public static Animal getAnimalById(int id) {
-        try {
-            Animal currentAnimal = animalsList.stream().filter(animal -> animal.getId() == id).findFirst().get();
-            return currentAnimal;
-        } catch (NoSuchElementException e) {
-            System.out.println("No such ID");
-            return null;
-        }
+        logger.logList(collections.getAnimalsList());
+        System.out.println();
+        AdminInterface inte = new AdminInterface(collections);
+        inte.getInterface();
     }
 
 }

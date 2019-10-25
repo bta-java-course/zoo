@@ -59,11 +59,11 @@ public class CustomerSpecifications {
             allergens.add(allergen);
     }
 
-    public Psychotype getPsychotype() {
+    public Psychotype getPsychoType() {
         return psychotype;
     }
 
-    public void setPsychotype(Psychotype psychotype) {
+    public void setPsychoType(Psychotype psychotype) {
         this.psychotype = psychotype;
     }
 }

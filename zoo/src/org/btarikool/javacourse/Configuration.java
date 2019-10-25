@@ -2,7 +2,6 @@ package org.btarikool.javacourse;
 
 
 import com.sun.xml.internal.ws.util.StringUtils;
-import org.btarikool.javacourse.genus.species.*;
 
 import java.io.*;
 import java.util.*;
@@ -10,12 +9,16 @@ import java.util.stream.Collectors;
 
 public class Configuration {
 
-    private static final File PATH = new File(System.getProperty("user.dir").concat("\\zoo\\conf\\petshop.properties"));
+    private static final File PROPPATH = new File(System.getProperty("user.dir").
+            concat("\\zoo\\conf\\petshop.properties"));
     private static Properties prop = new Properties();
+    private static final String BASICINFO = "animal.";
+    private static final String SUBINFO = "animal.subInfo.";
+    private static final String SPECIFICINFO = "animal.specifications.";
     private static Map<String, String> map = new HashMap<>();
 
     static {
-        try (FileInputStream input = new FileInputStream(PATH)) {
+        try (FileInputStream input = new FileInputStream(PROPPATH)) {
             prop.load(input);
             prop.entrySet().stream().
                     filter(a -> ((String)a.getKey()).startsWith("animal")).
@@ -54,22 +57,12 @@ public class Configuration {
 
     private static Animal getSpeciesClass(Map<String, String> tempMap) {
         Animal animal = null;
-        switch (tempMap.get("species")) {
-            case "frog":
-                animal = new Frog();
-                break;
-            case "cat":
-                animal = new Cat();
-                break;
-            case "bony":
-                animal = new Bony();
-                break;
-            case "parrot":
-                animal = new Parrot();
-                break;
-            case "turtle":
-                animal = new Turtle();
-                break;
+        try {
+            Class clazz = Class.forName("org.btarikool.javacourse.genus.species."
+                    + StringUtils.capitalize(tempMap.get("species")));
+            animal = (Animal) clazz.newInstance();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
         }
         return animal;
     }
@@ -77,33 +70,30 @@ public class Configuration {
     private static Map<String, String> createNextAnimalMap() {
         int animalFromMap = getAnimalsCountInMap();
         Map<String, String> tempMap = new HashMap<>();
-        stringToHashMap(getBasicInfoString(animalFromMap), tempMap);
-        stringToHashMap(getSubInfoString(animalFromMap), tempMap);
-        stringToHashMap(getSpecificationsString(animalFromMap), tempMap);
+        stringToHashMap(getInfoString(animalFromMap), tempMap);
         return tempMap;
     }
 
-    private static String getBasicInfoString(int i) {
-        String basicInfo = map.get("animal." + i);
-        map.remove("animal." + i);
-        return basicInfo;
+    private static String getInfoString(int i) {
+        String info =  map.entrySet().stream().filter(a ->
+                a.getKey().equals(BASICINFO + i) ||
+                a.getKey().equals(SUBINFO + i)||
+                a.getKey().equals(SPECIFICINFO + i)).
+                map(a -> a.getValue()).
+                collect(Collectors.joining(";"));
+        removeInfoFromMap(i);
+        return info;
     }
 
-    private static String getSubInfoString(int i) {
-        String subInfo = map.get("animal." + i + ".subInfo");
-        map.remove("animal." + i + ".subInfo");
-        return subInfo;
-    }
-
-    private static String getSpecificationsString(int i) {
-        String specifications = map.get("animal." + i + ".specifications");
-        map.remove("animal." + i + ".specifications");
-        return specifications;
+    private static void removeInfoFromMap(int i) {
+        map.remove(BASICINFO + i);
+        map.remove(SUBINFO + i);
+        map.remove(SPECIFICINFO + i);
     }
 
     private static void stringToHashMap(String string, Map<String, String> tempMap) {
-     Arrays.asList(string.split(";")).
-             stream().map(next -> next.split(":")).
+     Arrays.asList(string.split(";")).stream().
+             map(next -> next.split(":")).
              collect(Collectors.toMap(
                      a -> a[0],
                      a -> a.length > 1 ? a[1] : ""
@@ -114,23 +104,6 @@ public class Configuration {
     private static int getAnimalsCountInMap() {
         int eachAnimalLinesCountInProp = 3;
         return map != null && map.size() > 0 ? map.size() / eachAnimalLinesCountInProp : 0;
-    }
-
-    public static void log(String message) {
-        PrintWriter out = null;
-        try {
-            out = new PrintWriter(
-                    new FileWriter(
-                            System.getProperty("user.dir").
-                                    concat("\\zoo\\log\\log_".
-                                            concat(String.valueOf(new Date().getTime())).
-                                            concat(".log"))), true);
-            out.write(message);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            out.close();
-        }
     }
 
 }
