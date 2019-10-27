@@ -3,10 +3,7 @@ package org.btarikool.javacourse.zoo;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
-import java.util.Random;
+import java.util.*;
 
 public class Settings {
     private static Properties properties = new Properties();
@@ -19,32 +16,20 @@ public class Settings {
         }
     }
 
-public String getNick(int i){
-    try {
-        List<String> listOfNames = Arrays.asList(properties.getProperty("shop.pets.nicks").split(","));
-        return listOfNames.get(i);
-    }catch (Exception e){
-        System.out.println("Invalid properties value for randomName");
-        return "";
+    public static List<Animal> getAnimals() {
+        List<Animal> list = new ArrayList<>();
+        try {
+            List<String> listOfNames = Arrays.asList(properties.getProperty("shop.pets.nicks").split(","));
+            List<String> listOfSex = Arrays.asList(properties.getProperty("shop.pets.sex").split(","));
+            List<String> listOfPrices = Arrays.asList(properties.getProperty("shop.pets.prices").split(","));
+            List<String> listOfSpecies = Arrays.asList(properties.getProperty("shop.pets.species").split(","));
+            for (int i = 0; i < listOfNames.size(); i++) {
+                Animal animal = Animal.createAnimal(listOfNames.get(i), listOfSpecies.get(i), listOfSex.get(i), listOfPrices.get(i));
+                list.add(animal);
+            }
+        } catch (Exception e) {
+            System.out.println("Invalid properties value for randomName");
+        }
+        return list;
     }
-}
-public String getSex(int i){
-    try {
-        List<String> listOfNames = Arrays.asList(properties.getProperty("shop.pets.sex").split(","));
-        return listOfNames.get(i);
-    }catch (Exception e){
-        System.out.println("Invalid properties value for randomName");
-        return "";
-    }
-}
-public String getPrice(int i){
-    try {
-        List<String> listOfNames = Arrays.asList(properties.getProperty("shop.pets.prices").split(","));
-        return listOfNames.get(i);
-    }catch (Exception e){
-        System.out.println("Invalid properties value for randomName");
-        return "";
-    }
-}
-
 }

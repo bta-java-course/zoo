@@ -1,9 +1,8 @@
-package org.btarikool.javacourse.zoo.animals;
+package org.btarikool.javacourse.zoo.animals.amphibias;
 
 import org.btarikool.javacourse.zoo.genus.Amphibia;
 
 public class Salamander extends Amphibia {
-    public Salamander(int i) {
-        super(i);
+    public Salamander() {
     }
 }

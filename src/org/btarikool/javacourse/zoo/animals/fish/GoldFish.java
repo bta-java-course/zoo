@@ -1,9 +1,8 @@
-package org.btarikool.javacourse.zoo.animals;
+package org.btarikool.javacourse.zoo.animals.fish;
 
 import org.btarikool.javacourse.zoo.genus.Fish;
 
 public class GoldFish extends Fish {
-    public GoldFish(int i) {
-        super(i);
+    public GoldFish(){
     }
 }

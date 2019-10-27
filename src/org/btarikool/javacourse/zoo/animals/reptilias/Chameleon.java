@@ -1,9 +1,9 @@
-package org.btarikool.javacourse.zoo.animals;
+package org.btarikool.javacourse.zoo.animals.reptilias;
 
 import org.btarikool.javacourse.zoo.genus.Reptilia;
 
 public class Chameleon extends Reptilia {
-    public Chameleon(int i) {
-        super(i);
+    public Chameleon() {
+
     }
 }
