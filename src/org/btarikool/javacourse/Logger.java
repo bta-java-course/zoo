@@ -17,7 +17,7 @@ public class Logger {
 
     private final static long LOG_CLEAR_TIME = 60000;
     private File logPath = new File(System.getProperty("user.dir").
-            concat("\\zoo\\log\\log_".concat(String.valueOf(new Date().getTime())).concat(".log")));
+            concat("\\log\\log_".concat(String.valueOf(new Date().getTime())).concat(".log")));
     private PrintWriter writer;
 
 
@@ -41,7 +41,7 @@ public class Logger {
     }
 
     private void clearLogFiles() {
-        Path path = Paths.get(System.getProperty("user.dir").concat("\\zoo\\log\\")).toAbsolutePath();
+        Path path = Paths.get(System.getProperty("user.dir").concat("\\log\\")).toAbsolutePath();
         try {
             Files.walkFileTree(path,  EnumSet.of(FileVisitOption.FOLLOW_LINKS), 1, new MyVisitor());
         } catch (IOException e) {

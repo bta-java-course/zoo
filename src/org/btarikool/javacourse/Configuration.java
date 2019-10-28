@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class Configuration {
 
     private static final File PROPPATH = new File(System.getProperty("user.dir").
-            concat("\\zoo\\conf\\petshop.properties"));
+            concat("\\conf\\petshop.properties"));
     private static Properties prop = new Properties();
     private static final String BASICINFO = "animal.";
     private static final String SUBINFO = "animal.subInfo.";
