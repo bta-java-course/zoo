@@ -15,8 +15,11 @@ public class PetShop {
     private static String toLog = "Animals: \n";
 
     public static void main(String[] args) {
-        System.out.println(Settings.getAnimals());
+        for (Animal animal : Settings.getAnimals()) {
+            System.out.println(animal);
+        }
         Animal.writeToLog();
-        System.out.println(Animal.getListOfAnimals());
+        Customer customer = new Customer(100, "USD");
+        System.out.println(customer);
     }
 }

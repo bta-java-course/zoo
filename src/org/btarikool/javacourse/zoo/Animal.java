@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Animal {
-    private static List<Animal> listOfAnimals = new ArrayList<Animal>();
+    private static List<Animal> listOfAnimals = new ArrayList<>();
     // private static String toLog = "Animals: \n";
     private String nick;
     private String sex;
@@ -154,7 +154,7 @@ public abstract class Animal {
     public static void writeToLog() {
         StringBuilder toLog = new StringBuilder("Animals: \n");
         for (Animal check : listOfAnimals) {
-            toLog.append(check);
+            toLog.append(check +"\n");
         }
         try {
             FileWriter writer = new FileWriter("log/petshop_out.log");
@@ -173,7 +173,7 @@ public abstract class Animal {
                 "nick='" + nick + '\'' +
                         ", species= '" + species + '\'' +
                         ", sex='" + sex + '\'' +
-                        ", price='" + price + '\'' +
-                        "\n";
+                        ", price='" + price + '\''
+                        ;
     }
 }

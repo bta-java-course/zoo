@@ -23,8 +23,10 @@ public class Settings {
             List<String> listOfSex = Arrays.asList(properties.getProperty("shop.pets.sex").split(","));
             List<String> listOfPrices = Arrays.asList(properties.getProperty("shop.pets.prices").split(","));
             List<String> listOfSpecies = Arrays.asList(properties.getProperty("shop.pets.species").split(","));
+
             for (int i = 0; i < listOfNames.size(); i++) {
-                Animal animal = Animal.createAnimal(listOfNames.get(i), listOfSpecies.get(i), listOfSex.get(i), listOfPrices.get(i));
+                Animal animal = Animal.createAnimal(listOfNames.get(i), listOfSpecies.get(i),
+                        listOfSex.get(i), listOfPrices.get(i));
                 list.add(animal);
             }
         } catch (Exception e) {
