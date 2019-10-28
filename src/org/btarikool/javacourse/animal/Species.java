@@ -85,5 +85,4 @@ public abstract class Species {
         return animal;
 
     }
->>>>>>> d5722ab5165c1092b7b3e97207b9fb18023b250e
-}
+
