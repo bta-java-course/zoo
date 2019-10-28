@@ -3,5 +3,5 @@ package org.btarikool.javacourse.animal.types;
 import org.btarikool.javacourse.Noise;
 
 public interface Noisy {
-    void makesNoise(Noise noise);
+    void makesNoise();
 }

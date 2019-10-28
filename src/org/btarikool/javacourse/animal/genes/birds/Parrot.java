@@ -6,7 +6,8 @@ import org.btarikool.javacourse.animal.types.Noisy;
 
 public class Parrot extends Bird implements Noisy {
     @Override
-    public void makesNoise(Noise noise) {
-
+    public void makesNoise() {
+        this.noise = new Noise(100, Noise.Feature.UNEXPECTED);
+        System.out.println("Parrot makes noise: " + this.noise);
     }
 }

@@ -4,7 +4,7 @@ public class Noise {
 
     double level;
     Feature feature;
-    static class Feature {
+    public static class Feature {
         public static final Feature SHARP = new Feature("SHARP");
         public static final Feature MELODIC = new Feature("MELODIC");
         public static final Feature UNEXPECTED = new Feature("UNEXPECTED");
