@@ -1,6 +1,7 @@
 package org.btarikool.javacourse.settings;
 
 import org.btarikool.javacourse.animal.Animal;
+import org.btarikool.javacourse.animal.Species;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -22,15 +23,24 @@ public class Settings {
 
     }
 
-    public ArrayList<Animal> getSpecies() {
+    public static List<Animal> getAnimals() {
         List<Animal> animals = new ArrayList<>();
-        String species = properties.getProperty("shop.species");
+        String nicks = properties.getProperty("shop.pets.nicks");
+        String species = properties.getProperty("shop.pets.species");
+        String sexes = properties.getProperty("shop.pets.sex");
+        String prices = properties.getProperty("shop.pets.prices");
+        List<String> animalList = Arrays.asList(nicks.split(","));
         List<String> speciesList = Arrays.asList(species.split(","));
-        for(String s : speciesList) {
-            
+        List<String> sexList = Arrays.asList(sexes.split(","));
+        List<String> pricesList = Arrays.asList(prices.split(","));
+        for(int i = 0; i < animalList.size(); i++) {
+            int speciesId = Integer.parseInt(speciesList.get(i));
+            double price = Double.parseDouble(pricesList.get(i));
+            Animal animal = Species.getNewAnimalBySpeciesId(speciesId,
+                                                    animalList.get(i), price, sexList.get(i));
+            animals.add(animal);
         }
-
-        return null;
+        return animals;
     }
 
 }
