@@ -22,8 +22,9 @@ public class Settings {
 
     }
 
-    public ArrayList<Animal> getSpecies() {
+    public List<Animal> getSpecies() {
         List<Animal> animals = new ArrayList<>();
+        String nicks;
         String species = properties.getProperty("shop.species");
         List<String> speciesList = Arrays.asList(species.split(","));
         for(String s : speciesList) {
