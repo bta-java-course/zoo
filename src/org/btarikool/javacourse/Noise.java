@@ -2,22 +2,34 @@ package org.btarikool.javacourse;
 
 public class Noise {
 
-    public static final Noise HARD_MELODIC = new Noise(90, new Feature(true, true, false));
     double level;
     Feature feature;
     static class Feature {
-        boolean melodic;
-        boolean sharp;
-        boolean sudden;
+        public static final Feature SHARP = new Feature("SHARP");
+        public static final Feature MELODIC = new Feature("MELODIC");
+        public static final Feature UNEXPECTED = new Feature("UNEXPECTED");
+        String type;
+        private Feature(String type) {
+            this.type = type;
+        }
 
-        public Feature(boolean melodic, boolean sharp, boolean sudden) {
-            this.melodic = melodic;
-            this.sharp = sharp;
-            this.sudden = sudden;
+        @Override
+        public String toString() {
+            return "Feature{" +
+                    "type='" + type + '\'' +
+                    '}';
         }
     }
     public Noise(double level, Feature feature) {
         this.level = level;
         this.feature = feature;
+    }
+
+    @Override
+    public String toString() {
+        return "Noise{" +
+                "level=" + level +
+                ", feature=" + feature +
+                '}';
     }
 }
