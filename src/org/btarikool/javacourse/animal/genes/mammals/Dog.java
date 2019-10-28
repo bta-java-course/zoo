@@ -2,7 +2,7 @@ package org.btarikool.javacourse.animal.genes.mammals;
 
  HEAD
 public class Dog {
-=======
+
 import org.btarikool.javacourse.animal.genes.Mammalia;
 
 public class Dog extends Mammalia {
