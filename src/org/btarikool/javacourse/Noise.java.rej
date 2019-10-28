@@ -1,0 +1,10 @@
+diff a/src/org/btarikool/javacourse/Noise.java b/src/org/btarikool/javacourse/Noise.java	(rejected hunks)
+@@ -4,7 +4,7 @@
+ 
+     double level;
+     Feature feature;
+-    static class Feature {
++    public static class Feature {
+         public static final Feature SHARP = new Feature("SHARP");
+         public static final Feature MELODIC = new Feature("MELODIC");
+         public static final Feature UNEXPECTED = new Feature("UNEXPECTED");

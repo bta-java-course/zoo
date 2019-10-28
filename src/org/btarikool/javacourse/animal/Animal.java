@@ -1,9 +1,14 @@
 package org.btarikool.javacourse.animal;
 
+import org.btarikool.javacourse.Allergie;
+import org.btarikool.javacourse.Noise;
+
 public abstract class Animal {
     private String nick;
     private double price;
     private String sex;
+    public Noise noise;
+    public Allergie makingAllergie;
 
     public String getNick() {
         return nick;
@@ -35,6 +40,8 @@ public abstract class Animal {
                 "nick='" + nick + '\'' +
                 ", price=" + price +
                 ", sex='" + sex + '\'' +
+                (noise == null ? "" : " , noise =" + noise)+
+                (makingAllergie == null ?"":", makingAllergie = " + makingAllergie)+
                 '}';
     }
 }
