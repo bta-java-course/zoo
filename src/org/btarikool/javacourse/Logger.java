@@ -1,7 +1,9 @@
 package org.btarikool.javacourse;
 
+import javafx.stage.FileChooser;
 import sun.rmi.runtime.Log;
 
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -38,6 +40,25 @@ public class Logger {
                         map(animal -> animal.toString()).
                         collect(Collectors.joining("\n"));
         logString(listToString);
+    }
+
+    public String listToString(List<Animal> list) {
+        return list.stream().
+                map(animal -> animal.toString()).
+                collect(Collectors.joining("\n"));
+    }
+
+    public void saveLogWithPathChooser(String log) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialFileName("log_".concat(String.valueOf(new Date().getTime())).concat(".log"));
+        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("log", "log", "log"));
+        File path = fileChooser.showSaveDialog(null);
+        if (path != null) {
+            logPath = new File(path.getAbsolutePath());
+            logString(log);
+        } else {
+            System.out.println("Choose a path");
+        }
     }
 
     private void clearLogFiles() {

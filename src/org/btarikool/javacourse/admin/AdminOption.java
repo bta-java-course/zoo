@@ -1,6 +1,8 @@
-package org.btarikool.javacourse;
+package org.btarikool.javacourse.admin;
 
 
+import org.btarikool.javacourse.Collections;
+import org.btarikool.javacourse.Logger;
 import org.btarikool.javacourse.genus.Genus;
 import org.btarikool.javacourse.genus.species.Species;
 

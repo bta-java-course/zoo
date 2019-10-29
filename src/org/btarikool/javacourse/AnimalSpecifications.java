@@ -71,6 +71,6 @@ public class AnimalSpecifications {
                 ", CityLivingAble: " + cityLivingAble +
                 ", LivingYears: " + livingYears +
                 ", Allergens: " + allergens +
-                ", Psychotype: " + psychotype;
+                ", Psychotype: " + psychotype + "\n";
     }
 }

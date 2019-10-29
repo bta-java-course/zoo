@@ -1,15 +1,14 @@
-package org.btarikool.javacourse;
+package org.btarikool.javacourse.admin;
 
+import org.btarikool.javacourse.Collections;
 import org.btarikool.javacourse.genus.Genus;
 import org.btarikool.javacourse.genus.species.Species;
 
-import javax.swing.text.html.Option;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 public class AdminInterface {
 

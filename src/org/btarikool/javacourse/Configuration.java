@@ -55,6 +55,15 @@ public class Configuration {
         animal.getAnimalSpecifications().setPsychotype(tempMap.get("psychoType").toUpperCase());
     }
 
+    public static void addAnimalToProp(List<Animal> list) {
+        try (RandomAccessFile ra = new RandomAccessFile(PROPPATH, "r")){
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     private static Animal getSpeciesClass(Map<String, String> tempMap) {
         Animal animal = null;
         try {

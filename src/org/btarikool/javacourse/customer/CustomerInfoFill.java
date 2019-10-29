@@ -1,4 +1,8 @@
-package org.btarikool.javacourse;
+package org.btarikool.javacourse.customer;
+
+import org.btarikool.javacourse.Allergen;
+import org.btarikool.javacourse.Psychotype;
+import org.btarikool.javacourse.customer.Customer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,7 +32,7 @@ public class CustomerInfoFill {
         while (!((budget = reader.readLine()).matches("\\d+,?\\.?\\d*"))) {
             System.out.print(String.format(WRONG_ANSWER, "a number"));
         }
-        customer.setBudget((Double.parseDouble(budget.replaceAll(",", "."))));
+        //customer.setBudget((Double.parseDouble(budget.replaceAll(",", "."))));
     }
 
     private static void systemInAllergen(BufferedReader reader, Customer customer) throws IOException {

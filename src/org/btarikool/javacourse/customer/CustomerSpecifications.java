@@ -1,4 +1,7 @@
-package org.btarikool.javacourse;
+package org.btarikool.javacourse.customer;
+
+import org.btarikool.javacourse.Allergen;
+import org.btarikool.javacourse.Psychotype;
 
 import java.util.ArrayList;
 import java.util.Arrays;
