@@ -21,5 +21,6 @@ public class PetShop {
         Animal.writeToLog();
         Customer customer = new Customer(100, "USD");
         System.out.println(customer);
+        GraphicalInterface.startUI(args);
     }
 }
