@@ -10,7 +10,7 @@ public class Noise {
 
         public static final Feature MELODIC = new Feature("Melodic");
         public static final Feature SHARP = new Feature("Sharp");
-        public static final Feature SUDDEN = new Feature("Sudden");
+        public static final Feature UNEXPECTED = new Feature("Unexpected");
         String type;
 
         private Feature(String type) {
