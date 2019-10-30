@@ -1,17 +1,8 @@
 package org.btarikool.javacourse;
 
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.*;
-import javafx.scene.text.Font;
-import javafx.stage.Stage;
-import org.btarikool.javacourse.admin.AdminInterface2;
-import org.btarikool.javacourse.admin.AdminOption;
+import org.btarikool.javacourse.admin.AdminInterface;
+import org.btarikool.javacourse.config.Configuration;
 
 
 public class PetShop {
@@ -23,7 +14,7 @@ public class PetShop {
     }
 
     public static void main(String[] args) {
-       Application.launch(AdminInterface2.class, args);
+       Application.launch(AdminInterface.class, args);
 
 
 /*        Logger logger = new Logger();

@@ -1,4 +1,4 @@
-package org.btarikool.javacourse;
+package org.btarikool.javacourse.enums;
 
 public enum Currency {
     USD(1.17050d),

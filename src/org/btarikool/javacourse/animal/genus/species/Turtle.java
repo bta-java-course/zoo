@@ -1,18 +1,18 @@
-package org.btarikool.javacourse.genus.species;
+package org.btarikool.javacourse.animal.genus.species;
 
-import org.btarikool.javacourse.genus.Fish;
+import org.btarikool.javacourse.animal.genus.Reptile;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class Goldy extends Fish {
+public class Turtle extends Reptile {
 
     private Set<String> compatibility = new HashSet<>();
 
-    public Goldy() {
+    public Turtle() {
     }
 
-    public Goldy(String nick, int age, double price, boolean sex) {
+    public Turtle(String nick, int age, double price, boolean sex) {
         super(nick, age, price, sex);
     }
 

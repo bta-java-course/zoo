@@ -2,9 +2,9 @@ package org.btarikool.javacourse.admin;
 
 
 import org.btarikool.javacourse.Collections;
-import org.btarikool.javacourse.Logger;
-import org.btarikool.javacourse.genus.Genus;
-import org.btarikool.javacourse.genus.species.Species;
+import org.btarikool.javacourse.config.Logger;
+import org.btarikool.javacourse.animal.genus.Genus;
+import org.btarikool.javacourse.animal.genus.species.Species;
 
 public enum AdminOption {
 

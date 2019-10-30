@@ -1,6 +1,6 @@
-package org.btarikool.javacourse.genus.species;
+package org.btarikool.javacourse.animal.genus.species;
 
-import org.btarikool.javacourse.genus.Mammal;
+import org.btarikool.javacourse.animal.genus.Mammal;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,6 +1,6 @@
-package org.btarikool.javacourse.genus;
+package org.btarikool.javacourse.animal.genus;
 
-import org.btarikool.javacourse.Animal;
+import org.btarikool.javacourse.animal.Animal;
 
 public class Mammal extends Animal {
 

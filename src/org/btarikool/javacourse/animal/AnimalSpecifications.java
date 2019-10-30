@@ -1,4 +1,7 @@
-package org.btarikool.javacourse;
+package org.btarikool.javacourse.animal;
+
+import org.btarikool.javacourse.enums.Psychotype;
+import org.btarikool.javacourse.enums.Allergen;
 
 import java.util.ArrayList;
 import java.util.Arrays;

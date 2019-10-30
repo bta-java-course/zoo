@@ -1,6 +1,6 @@
 package org.btarikool.javacourse.customer;
 
-import org.btarikool.javacourse.Allergen;
+import org.btarikool.javacourse.enums.Allergen;
 
 import java.util.List;
 

@@ -1,8 +1,7 @@
 package org.btarikool.javacourse.customer;
 
-import org.btarikool.javacourse.Allergen;
-import org.btarikool.javacourse.Psychotype;
-import org.btarikool.javacourse.customer.Customer;
+import org.btarikool.javacourse.enums.Allergen;
+import org.btarikool.javacourse.enums.Psychotype;
 
 import java.io.BufferedReader;
 import java.io.IOException;

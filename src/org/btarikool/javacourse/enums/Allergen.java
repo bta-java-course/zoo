@@ -1,4 +1,4 @@
-package org.btarikool.javacourse;
+package org.btarikool.javacourse.enums;
 
 import com.sun.xml.internal.ws.util.StringUtils;
 

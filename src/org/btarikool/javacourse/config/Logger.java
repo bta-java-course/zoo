@@ -1,9 +1,8 @@
-package org.btarikool.javacourse;
+package org.btarikool.javacourse.config;
 
 import javafx.stage.FileChooser;
-import sun.rmi.runtime.Log;
+import org.btarikool.javacourse.animal.Animal;
 
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

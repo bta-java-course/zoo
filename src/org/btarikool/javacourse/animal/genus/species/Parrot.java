@@ -1,18 +1,18 @@
-package org.btarikool.javacourse.genus.species;
+package org.btarikool.javacourse.animal.genus.species;
 
-import org.btarikool.javacourse.genus.Amphibian;
+import org.btarikool.javacourse.animal.genus.Bird;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class Frog extends Amphibian {
+public class Parrot extends Bird {
 
     private Set<String> compatibility = new HashSet<>();
 
-    public Frog() {
+    public Parrot() {
     }
 
-    public Frog(String nick, int age, double price, boolean sex) {
+    public Parrot(String nick, int age, double price, boolean sex) {
         super(nick, age, price, sex);
     }
 

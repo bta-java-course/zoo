@@ -1,22 +1,18 @@
 package org.btarikool.javacourse.admin;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.stage.FileChooser;
-import org.btarikool.javacourse.Logger;
 import org.btarikool.javacourse.PetShop;
-import org.btarikool.javacourse.genus.Genus;
-import org.btarikool.javacourse.genus.species.Species;
+import org.btarikool.javacourse.animal.genus.Genus;
+import org.btarikool.javacourse.animal.genus.species.Species;
+import org.btarikool.javacourse.config.Logger;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable
+public class AdminController implements Initializable
 
 {
 
@@ -91,6 +87,9 @@ public class Controller implements Initializable
     }
     public void getReptile() {
         mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListFilteredGenus(Genus.REPTILE)));
+    }
+    public void addNewAnimal() {
+        String basicInfo = "animal." + (PetShop.getCollections().getAnimalsList().size() + 2);
     }
 
 

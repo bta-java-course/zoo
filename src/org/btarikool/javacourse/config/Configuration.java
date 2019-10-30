@@ -1,7 +1,8 @@
-package org.btarikool.javacourse;
+package org.btarikool.javacourse.config;
 
 
 import com.sun.xml.internal.ws.util.StringUtils;
+import org.btarikool.javacourse.animal.Animal;
 
 import java.io.*;
 import java.util.*;
@@ -55,19 +56,20 @@ public class Configuration {
         animal.getAnimalSpecifications().setPsychotype(tempMap.get("psychoType").toUpperCase());
     }
 
-    public static void addAnimalToProp(List<Animal> list) {
-        try (RandomAccessFile ra = new RandomAccessFile(PROPPATH, "r")){
-            
+    public static void addAnimalToProp(String[] props) {
+        try (RandomAccessFile ra = new RandomAccessFile(PROPPATH, "rw")){
+            ra.seek(PROPPATH.length());
+            String newProp = Arrays.asList(props).stream().collect(Collectors.joining("\n"));
+            ra.write(newProp.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     private static Animal getSpeciesClass(Map<String, String> tempMap) {
         Animal animal = null;
         try {
-            Class clazz = Class.forName("org.btarikool.javacourse.genus.species."
+            Class clazz = Class.forName("org.btarikool.javacourse.animal.genus.species."
                     + StringUtils.capitalize(tempMap.get("species")));
             animal = (Animal) clazz.newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {

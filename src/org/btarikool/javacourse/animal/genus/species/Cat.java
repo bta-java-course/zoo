@@ -1,18 +1,18 @@
-package org.btarikool.javacourse.genus.species;
+package org.btarikool.javacourse.animal.genus.species;
 
-import org.btarikool.javacourse.genus.Reptile;
+import org.btarikool.javacourse.animal.genus.Mammal;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class Turtle extends Reptile {
+public class Cat extends Mammal {
 
     private Set<String> compatibility = new HashSet<>();
 
-    public Turtle() {
+    public Cat() {
     }
 
-    public Turtle(String nick, int age, double price, boolean sex) {
+    public Cat(String nick, int age, double price, boolean sex) {
         super(nick, age, price, sex);
     }
 

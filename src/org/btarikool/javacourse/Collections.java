@@ -1,8 +1,9 @@
 package org.btarikool.javacourse;
 
+import org.btarikool.javacourse.animal.Animal;
 import org.btarikool.javacourse.customer.Customer;
-import org.btarikool.javacourse.genus.Genus;
-import org.btarikool.javacourse.genus.species.Species;
+import org.btarikool.javacourse.animal.genus.Genus;
+import org.btarikool.javacourse.animal.genus.species.Species;
 
 import java.util.ArrayList;
 import java.util.Comparator;
