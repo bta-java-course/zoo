@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class GraphicalInterface extends Application {
-
+private Customer customer;
     public void start(Stage stage) {
         GridPane pane = new GridPane();
         pane.setPadding(new Insets(20));
@@ -77,20 +77,29 @@ public class GraphicalInterface extends Application {
             } else if(!(budgetInput.getText().matches("[1-9]\\d*\\.\\d+$"))){
                 labelresponse.setText("Budget has to be Double (e.g. 1.0) greater than 0");
             } else{
-                labelresponse.setText("OK");
+                labelresponse.setText("Customer created!");
+               createCustomer(nameInput.getText(),
+                        Integer.parseInt(ageInput.getText()),
+                        Double.parseDouble(budgetInput.getText()),currencyList.getValue());
+                System.out.println(Customer.getListOfCustomers());
             }
+            Customer.writeToLog();
         });
-
-
         Scene scene = new Scene(pane, 370, 480);
         stage.setScene(scene);
-        stage.setTitle("JavaFX Test");
+        stage.setTitle("Create new Customer");
         stage.show();
 
     }
 
     public static void startUI(String[] args) {
         launch(args);
+    }
+    public void createCustomer(String theName, int theAge, double theAmount, String theCurrency){
+        Customer theCustomer = new Customer(theAmount, theCurrency);
+        theCustomer.setName(theName);
+        theCustomer.setAge(theAge);
+        Customer.getListOfCustomers().add(theCustomer);
     }
 
 }

@@ -1,7 +1,16 @@
 package org.btarikool.javacourse.zoo;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Customer {
     private Budget budget;
+    private  String name;
+    private  int age;
+    private static List<Customer> listOfCustomers = new ArrayList<>();
 
     class Budget {
         String currency;
@@ -47,10 +56,46 @@ public class Customer {
         return this.budget;
     }
 
+    public static List<Customer> getListOfCustomers() {
+        return listOfCustomers;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
-                "budget: " + budget +
+                "name: " + this.name +
+                " age: " + this.age +
+                " budget: " + this.budget +
                 '}';
+    }
+    public static void writeToLog() {
+        StringBuilder toLog = new StringBuilder("Customers: \n");
+        for (Customer check : listOfCustomers) {
+            toLog.append(check +"\n");
+        }
+        try {
+            FileWriter writer = new FileWriter("log/customerslist_out.log");
+            PrintWriter printWriter = new PrintWriter(writer);
+            printWriter.println(toLog);
+            printWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
