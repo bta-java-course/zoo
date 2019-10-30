@@ -31,7 +31,9 @@ public class Noise {
 
     @Override
     public String toString() {
-        return "Noise {" + "level =" + level + ", feature" + '}';
+        return "Noise {" + "level =" + level +
+                ", feature" + feature +
+                '}';
     }
 }
 

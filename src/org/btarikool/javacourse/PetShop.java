@@ -24,6 +24,7 @@ public class PetShop {
         report.toFile(animals, "animals");
 
         Noise firstNoise = new Noise(50, Noise.Feature.UNEXPECTED);
+
         Customer first = new Customer(100, Currency.EUR, Allergie.FUR, firstNoise);
         System.out.println(first);
     }

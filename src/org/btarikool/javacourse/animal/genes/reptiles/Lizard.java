@@ -8,9 +8,10 @@ public class Lizard extends Reptilia implements Allergene {
 
 
     @Override
-    public void makesAllergia() {
+    public void makesAllergie() {
         this.makingAllergie = Allergie.SMELL;
         System.out.println("Lizard makes Allergie" + this.makingAllergie);
     }
+
 }
 
