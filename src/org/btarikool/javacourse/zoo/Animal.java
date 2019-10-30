@@ -100,7 +100,7 @@ public abstract class Animal {
                 animal.setSpecies(theSpecies);
                 listOfAnimals.add(animal);
                 break;
-            case "goldFish":
+            case "goldfish":
                 animal = new GoldFish();
                 animal.setNick(theNick);
                 animal.setPrice(thePrice);
@@ -147,6 +147,7 @@ public abstract class Animal {
                 animal.setSex(theSex);
                 animal.setSpecies(theSpecies);
                 listOfAnimals.add(animal);
+                break;
         }
         return animal;
     }
@@ -173,7 +174,6 @@ public abstract class Animal {
                 "nick='" + nick + '\'' +
                         ", species= '" + species + '\'' +
                         ", sex='" + sex + '\'' +
-                        ", price='" + price + '\''
-                        ;
+                        ", price='" + price + '\'';
     }
 }
