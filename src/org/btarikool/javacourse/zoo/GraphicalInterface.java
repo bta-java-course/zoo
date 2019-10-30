@@ -10,7 +10,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class GraphicalInterface extends Application {
-private Customer customer;
+    private Customer customer;
+
     public void start(Stage stage) {
         GridPane pane = new GridPane();
         pane.setPadding(new Insets(20));
@@ -18,7 +19,7 @@ private Customer customer;
         pane.setVgap(15);
 
         Label requiredF = new Label("(Required fields marked as *)");
-        pane.add(requiredF, 0, 0,3,1);
+        pane.add(requiredF, 0, 0, 3, 1);
         Label name = new Label("Name*:");
         pane.add(name, 0, 1);
         TextField nameInput = new TextField("");
@@ -34,7 +35,7 @@ private Customer customer;
         TextField budgetInput = new TextField("");
         pane.add(budgetInput, 1, 3);
 
-        Label currency = new Label("Currency:");
+        Label currency = new Label("Currency*:");
         pane.add(currency, 0, 4);
         ComboBox<String> currencyList = new ComboBox<>();
         currencyList.getItems().add("EUR");
@@ -64,23 +65,24 @@ private Customer customer;
         button.setPrefWidth(100);
         GridPane.setHalignment(button, HPos.RIGHT);
         pane.add(button, 1, 9);
-        Label labelresponse= new Label();
+        Label labelresponse = new Label();
         labelresponse.setTextFill(Color.web("#ff0000"));
-        pane.add(labelresponse,0,10,3,1);
-        button.setOnAction( e ->  {
+        pane.add(labelresponse, 0, 10, 3, 1);
+        button.setOnAction(e -> {
             if (nameInput.getText().isEmpty()
                     || ageInput.getText().isEmpty()
-                    || budgetInput.getText().isEmpty()){
+                    || budgetInput.getText().isEmpty()
+                    || currencyList.getValue()== null) {
                 labelresponse.setText("Please fill in all required fields.");
-            } else if(!(ageInput.getText().matches("[1-9]\\d*"))){
+            } else if (!(ageInput.getText().matches("[1-9]\\d*"))) {
                 labelresponse.setText("Age has to be Integer greater than 0");
-            } else if(!(budgetInput.getText().matches("[1-9]\\d*\\.\\d+$"))){
+            } else if (!(budgetInput.getText().matches("[1-9]\\d*\\.\\d+$"))) {
                 labelresponse.setText("Budget has to be Double (e.g. 1.0) greater than 0");
-            } else{
+            } else {
                 labelresponse.setText("Customer created!");
-               createCustomer(nameInput.getText(),
+                createCustomer(nameInput.getText(),
                         Integer.parseInt(ageInput.getText()),
-                        Double.parseDouble(budgetInput.getText()),currencyList.getValue());
+                        Double.parseDouble(budgetInput.getText()), currencyList.getValue());
                 System.out.println(Customer.getListOfCustomers());
             }
             Customer.writeToLog();
@@ -95,7 +97,8 @@ private Customer customer;
     public static void startUI(String[] args) {
         launch(args);
     }
-    public void createCustomer(String theName, int theAge, double theAmount, String theCurrency){
+
+    public void createCustomer(String theName, int theAge, double theAmount, String theCurrency) {
         Customer theCustomer = new Customer(theAmount, theCurrency);
         theCustomer.setName(theName);
         theCustomer.setAge(theAge);
