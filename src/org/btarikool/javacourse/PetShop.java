@@ -2,6 +2,7 @@ package org.btarikool.javacourse;
 
 import javafx.application.Application;
 import org.btarikool.javacourse.admin.AdminInterface;
+import org.btarikool.javacourse.animal.genus.species.Species;
 import org.btarikool.javacourse.config.Configuration;
 
 
@@ -15,6 +16,8 @@ public class PetShop {
 
     public static void main(String[] args) {
        Application.launch(AdminInterface.class, args);
+        //collections.getAnimalsList().stream().forEach(System.out::println);
+        //collections.getAnimalsListFilteredSpecies(Species.BONY).stream().forEach(System.out::println);
 
 
 /*        Logger logger = new Logger();

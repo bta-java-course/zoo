@@ -49,13 +49,13 @@ public class Collections {
 
     public List<Animal> getAnimalsListSortedPriceLowestFirst() {
         return animalsList.stream().
-                sorted(Comparator.comparingDouble(Animal::getPrice)).
+                sorted(Comparator.comparingDouble(Animal::getDoublePrice)).
                 collect(Collectors.toList());
     }
 
     public List<Animal> getAnimalsListSortedPriceHighestFirst() {
         return animalsList.stream().
-                sorted(Comparator.comparingDouble(Animal::getPrice).reversed()).
+                sorted(Comparator.comparingDouble(Animal::getDoublePrice).reversed()).
                 collect(Collectors.toList());
     }
 
@@ -73,14 +73,14 @@ public class Collections {
 
     public List<Animal> getAnimalsListFilteredGenus(Genus genus) {
         return animalsList.stream().
-                filter(a -> a.getGenus().toLowerCase().equals(genus.toString().toLowerCase())).
+                filter(a -> a.getGenus().name().equals(genus.name())).
                 sorted(Comparator.comparing(Animal::getGenus)).
                 collect(Collectors.toList());
     }
 
     public List<Animal> getAnimalsListFilteredSpecies(Species species) {
         return animalsList.stream().
-                filter(a -> a.getSpecies().toLowerCase().equals(species.toString().toLowerCase())).
+                filter(a -> a.getSpecies().name().equals(species.name())).
                 sorted(Comparator.comparing(Animal::getSpecies)).
                 collect(Collectors.toList());
     }
@@ -90,7 +90,7 @@ public class Collections {
     }
 
     public double getAnimalsTotalCost() {
-        return animalsList.stream().mapToDouble(a -> a.getPrice()).sum();
+        return animalsList.stream().mapToDouble(a -> a.getDoublePrice()).sum();
     }
 
 

@@ -18,7 +18,7 @@ public class CustomerInfoFill {
             systemInBudget(reader, customer);
             systemInAllergen(reader, customer);
             systemInPsychoType(reader, customer);
-            systemInAfraidOfLoud(reader, customer);
+            //systemInAfraidOfLoud(reader, customer);
             systemInHousingArea(reader, customer);
             systemInResidencePlace(reader, customer);
             systemInAge(reader, customer);
@@ -74,14 +74,14 @@ public class CustomerInfoFill {
         customer.getSpecifications().setPsychoType(Psychotype.valueOf(psychoType.toUpperCase()));
     }
 
-    private static void systemInAfraidOfLoud(BufferedReader reader, Customer customer) throws IOException {
+/*    private static void systemInAfraidOfLoud(BufferedReader reader, Customer customer) throws IOException {
         System.out.print("Please enter whether you afraid of loud sounds or not [Yes, No]: ");
         String afraidOfLoud;
         while (!((afraidOfLoud = reader.readLine().toLowerCase()).matches("\\byes\\b|\\bno\\b"))) {
             System.out.print(String.format(WRONG_ANSWER, "a right answer"));
         }
         customer.getSpecifications().setAfraidOfLoudSounds(afraidOfLoud.equals("yes") ? true : false);
-    }
+    }*/
 
     private static void systemInHousingArea(BufferedReader reader, Customer customer) throws IOException {
         System.out.print("Please enter area of your housing: ");

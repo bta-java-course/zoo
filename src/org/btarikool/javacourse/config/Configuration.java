@@ -2,7 +2,10 @@ package org.btarikool.javacourse.config;
 
 
 import com.sun.xml.internal.ws.util.StringUtils;
+import org.btarikool.javacourse.Currency;
 import org.btarikool.javacourse.animal.Animal;
+import org.btarikool.javacourse.animal.genus.Genus;
+import org.btarikool.javacourse.animal.genus.species.Species;
 
 import java.io.*;
 import java.util.*;
@@ -44,10 +47,11 @@ public class Configuration {
     private static void newAnimalInitialisation(Map<String, String> tempMap, Animal animal) {
         animal.setNick(StringUtils.capitalize(tempMap.get("nick")));
         animal.setAge(Integer.parseInt(tempMap.get("age")));
-        animal.setPrice(Double.parseDouble(tempMap.get("price")));
         animal.setSex(tempMap.get("sex").equals("true") ? true : false);
-        animal.setGenus(tempMap.get("genus"));
-        animal.setSpecies(tempMap.get("species"));
+        animal.setGenus(Genus.valueOf(tempMap.get("genus").toUpperCase()));
+        animal.setSpecies(Species.valueOf(tempMap.get("species").toUpperCase()));
+        animal.getPrice().setPrice(Double.parseDouble(tempMap.get("price")));
+        animal.getPrice().setCurrency(Currency.EUR);
         animal.getAnimalSpecifications().setLoud(tempMap.get("isLoud").equals("true") ? true : false);
         animal.getAnimalSpecifications().setCityLivingAble(tempMap.get("cityLivingAble").equals("true") ? true : false);
         animal.getAnimalSpecifications().setSize(Double.parseDouble(tempMap.get("size")));
