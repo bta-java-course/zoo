@@ -3,6 +3,7 @@ package org.btarikool.javacourse.customer;
 import org.btarikool.javacourse.Allergen;
 import org.btarikool.javacourse.Noise;
 import org.btarikool.javacourse.Psychotype;
+import org.btarikool.javacourse.animal.Noisy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,17 +13,9 @@ public class CustomerSpecifications {
     private int volumeOfHousing;
     private boolean livingPlaceIsCity;
     private int age;
-    private Noise noiseEffected;
+    private List<Noise> noiseList= new ArrayList<>();
     private List<Allergen> allergens = new ArrayList<>();
     private Psychotype psychotype;
-
-    public Noise getNoiseEffected() {
-        return noiseEffected;
-    }
-
-    public void setNoiseEffected(Noise noiseEffected) {
-        this.noiseEffected = noiseEffected;
-    }
 
     public int getVolumeOfHousing() {
         return volumeOfHousing;
@@ -63,11 +56,28 @@ public class CustomerSpecifications {
             allergens.add(allergen);
     }
 
+    public void addNoise(Noise.Feature feature) {
+        Noise noise = new Noise();
+        noise.setFeature(feature);
+        noiseList.add(noise);
+    }
+
     public Psychotype getPsychoType() {
         return psychotype;
     }
 
     public void setPsychoType(Psychotype psychotype) {
         this.psychotype = psychotype;
+    }
+
+    @Override
+    public String toString() {
+        return "\nCustomerSpecifications: " +
+                "age :" + age +
+                ", volumeOfHousing: " + volumeOfHousing +
+                ", living place is city: " + livingPlaceIsCity +
+                "\nNoise sensitivity: " + noiseList +
+                "\nAllergens: " + allergens +
+                "\nPsycho Type: " + psychotype;
     }
 }

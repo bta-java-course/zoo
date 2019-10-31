@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class OLDAdminInterface {
+/*
 
     private Collections collection;
     private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -75,5 +76,6 @@ public class OLDAdminInterface {
         }
         return finalSelection;
     }
+*/
 
 }

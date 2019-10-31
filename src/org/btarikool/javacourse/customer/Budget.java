@@ -29,4 +29,11 @@ public class Budget {
     public void setAmount(double amount) {
         this.amount = amount;
     }
+
+    @Override
+    public String toString() {
+        return "\nBudget: " +
+                "amount: " + amount +
+                ", currency: " + currency;
+    }
 }

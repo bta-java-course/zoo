@@ -2,6 +2,7 @@ package org.btarikool.javacourse.config;
 
 import javafx.stage.FileChooser;
 import org.btarikool.javacourse.animal.Animal;
+import org.btarikool.javacourse.customer.Customer;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -17,12 +18,12 @@ import java.util.stream.Collectors;
 public class Logger {
 
     private final static long LOG_CLEAR_TIME = 60000;
-    private File logPath = new File(System.getProperty("user.dir").
-            concat("\\log\\log_".concat(String.valueOf(new Date().getTime())).concat(".log")));
+    private String path = System.getProperty("user.dir").concat("\\log\\" + "%s" + "_log_".concat(String.valueOf(new Date().getTime())).concat(".log"));
     private PrintWriter writer;
 
 
-    public void logString(String message) {
+    public void logString(String message, String prefix) {
+        File logPath = new File(String.format(path, prefix));
         try {
             this.writer = new PrintWriter(new FileWriter(logPath, true), true);
             writer.write(message + "\n");
@@ -38,7 +39,14 @@ public class Logger {
         String listToString = list.stream().
                         map(animal -> animal.toString()).
                         collect(Collectors.joining("\n"));
-        logString(listToString);
+        logString(listToString, "animals");
+    }
+
+    public void logCustomersList(List<Customer> list) {
+        String listToString = list.stream().
+                map(customer -> customer.toString()).
+                collect(Collectors.joining("\n"));
+        logString(listToString, "customers");
     }
 
     public String listToString(List<Animal> list) {
@@ -47,14 +55,14 @@ public class Logger {
                 collect(Collectors.joining("\n"));
     }
 
-    public void saveLogWithPathChooser(String log) {
+    public void saveLogWithPathChooser(String log, String prefix) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialFileName("log_".concat(String.valueOf(new Date().getTime())).concat(".log"));
         fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("log", "log", "log"));
         File path = fileChooser.showSaveDialog(null);
         if (path != null) {
-            logPath = new File(path.getAbsolutePath());
-            logString(log);
+            this.path = String.format(path.getAbsolutePath(), prefix);
+            logString(log, prefix);
         } else {
             System.out.println("Choose a path");
         }

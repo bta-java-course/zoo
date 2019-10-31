@@ -1,10 +1,13 @@
 package org.btarikool.javacourse;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class  Noise {
 
     double level;
     Feature feature;
-    enum Feature {
+    public enum Feature {
 
         SHARP("SHARP"),
         MELODIC("MELODIC"),
@@ -24,16 +27,35 @@ public class  Noise {
         }
     }
 
+    public Noise() {
+
+    }
+
     public Noise(double level, Feature feature) {
         this.level = level;
         this.feature = feature;
     }
 
+    public double getLevel() {
+        return level;
+    }
+
+    public void setLevel(double level) {
+        this.level = level;
+    }
+
+    public Feature getFeature() {
+        return feature;
+    }
+
+    public void setFeature(Feature feature) {
+        this.feature = feature;
+    }
+
     @Override
     public String toString() {
-        return "Noise{" +
-                "level=" + level +
-                ", feature=" + feature +
-                '}';
+        return "feature: " + feature.name() +
+                "(level: " + level + ")";
+
     }
 }

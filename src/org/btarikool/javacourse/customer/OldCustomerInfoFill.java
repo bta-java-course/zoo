@@ -9,17 +9,29 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerInfoFill {
-/*
+public class OldCustomerInfoFill {
+
     private final static String WRONG_ANSWER = "You entered something else, but not %s. Please try again: ";
 
     public static void fillingCustomerFields(Customer customer) {
-            systemInAllergen(customer);
-            systemInPsychoType(customer);
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            systemInBudget(reader, customer);
+            systemInAllergen(reader, customer);
+            systemInPsychoType(reader, customer);
             //systemInAfraidOfLoud(reader, customer);
-            systemInHousingArea(customer);
-            systemInResidencePlace(customer);
-            systemInAge(customer);
+            systemInHousingArea(reader, customer);
+            systemInResidencePlace(reader, customer);
+            systemInAge(reader, customer);
+        } catch (IOException e) {}
+    }
+
+    private static void systemInBudget(BufferedReader reader, Customer customer) throws IOException {
+        System.out.print("Please enter your budget: ");
+        String budget;
+        while (!((budget = reader.readLine()).matches("\\d+,?\\.?\\d*"))) {
+            System.out.print(String.format(WRONG_ANSWER, "a number"));
+        }
+        //customer.setBudget((Double.parseDouble(budget.replaceAll(",", "."))));
     }
 
     private static void systemInAllergen(BufferedReader reader, Customer customer) throws IOException {
@@ -62,14 +74,14 @@ public class CustomerInfoFill {
         customer.getSpecifications().setPsychoType(Psychotype.valueOf(psychoType.toUpperCase()));
     }
 
-*//*    private static void systemInAfraidOfLoud(BufferedReader reader, Customer customer) throws IOException {
+/*    private static void systemInAfraidOfLoud(BufferedReader reader, Customer customer) throws IOException {
         System.out.print("Please enter whether you afraid of loud sounds or not [Yes, No]: ");
         String afraidOfLoud;
         while (!((afraidOfLoud = reader.readLine().toLowerCase()).matches("\\byes\\b|\\bno\\b"))) {
             System.out.print(String.format(WRONG_ANSWER, "a right answer"));
         }
         customer.getSpecifications().setAfraidOfLoudSounds(afraidOfLoud.equals("yes") ? true : false);
-    }*//*
+    }*/
 
     private static void systemInHousingArea(BufferedReader reader, Customer customer) throws IOException {
         System.out.print("Please enter area of your housing: ");
@@ -98,5 +110,5 @@ public class CustomerInfoFill {
             System.out.print(String.format(WRONG_ANSWER, "an integer"));
         }
         customer.getSpecifications().setAge(Integer.parseInt(ageS));
-    }*/
+    }
 }

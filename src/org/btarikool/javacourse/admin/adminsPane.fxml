@@ -8,14 +8,13 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="adminsPane" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.btarikool.javacourse.admin.AdminController">
+<GridPane fx:id="adminsPane" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.231" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.btarikool.javacourse.admin.AdminController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -39,10 +38,10 @@
         </MenuBar>
         <Label text="PetShop" textFill="#6b6b6b" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
             <font>
-                <Font name="Cooper Black" size="46.0" />
+                <Font name="Segoe UI Black" size="46.0" />
             </font>
         </Label>
-        <Label fx:id="mainText" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="overflow:scroll" nodeOrientation="LEFT_TO_RIGHT" textAlignment="JUSTIFY" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+        <Label fx:id="mainText" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" style="overflow:scroll" textAlignment="JUSTIFY" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
 
         </Label>
         <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
@@ -80,6 +79,8 @@
                     </items>
                 </MenuButton>
                 <Button fx:id="getAnimals" maxWidth="150.0" minWidth="150.0" mnemonicParsing="false" onAction="#getAnimals" text="Show all animals" />
+                <Button fx:id="newUser" mnemonicParsing="false" onAction="#changeSceneToNewCustomerPanel" text="New Customer" />
+            <Button fx:id="buttonBackToMain" layoutX="1134.0" layoutY="18.0" mnemonicParsing="false" onAction="#changeSceneToPetShopPanel" text="Back to Main" />
             </buttons>
             <opaqueInsets>
                 <Insets />
