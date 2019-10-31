@@ -1,26 +1,27 @@
 package org.btarikool.javacourse.customer;
 
-import org.btarikool.javacourse.enums.Allergen;
-import org.btarikool.javacourse.enums.Psychotype;
+import org.btarikool.javacourse.Allergen;
+import org.btarikool.javacourse.Noise;
+import org.btarikool.javacourse.Psychotype;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class CustomerSpecifications {
-    private boolean afraidOfLoudSounds;
     private int volumeOfHousing;
     private boolean livingPlaceIsCity;
     private int age;
+    private Noise noiseEffected;
     private List<Allergen> allergens = new ArrayList<>();
     private Psychotype psychotype;
 
-    public boolean isAfraidOfLoudSounds() {
-        return afraidOfLoudSounds;
+    public Noise getNoiseEffected() {
+        return noiseEffected;
     }
 
-    public void setAfraidOfLoudSounds(boolean afraidOfLoudSounds) {
-        this.afraidOfLoudSounds = afraidOfLoudSounds;
+    public void setNoiseEffected(Noise noiseEffected) {
+        this.noiseEffected = noiseEffected;
     }
 
     public int getVolumeOfHousing() {

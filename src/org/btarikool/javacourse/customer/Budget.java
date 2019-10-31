@@ -1,6 +1,6 @@
 package org.btarikool.javacourse.customer;
 
-import org.btarikool.javacourse.enums.Currency;
+import org.btarikool.javacourse.Currency;
 
 public class Budget {
     private Currency currency;

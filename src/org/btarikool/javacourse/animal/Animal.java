@@ -1,14 +1,17 @@
 package org.btarikool.javacourse.animal;
 
+import org.btarikool.javacourse.animal.genus.Genus;
+import org.btarikool.javacourse.animal.genus.species.Species;
+
 public abstract class Animal {
     private String nick;
-    private String genus;
-    private String species;
+    private Genus genus;
+    private Species species;
     private int id;
     private static int idCounter = 0;
     private int age;
-    private double price;
     private boolean sex;
+    private Price price;
     private AnimalSpecifications animalSpecifications;
 
     public Animal() {
@@ -17,7 +20,7 @@ public abstract class Animal {
         this.animalSpecifications = new AnimalSpecifications();
     }
 
-    public Animal(String nick, int age, double price, boolean sex) {
+    public Animal(String nick, int age, Price price, boolean sex) {
         this.nick = nick;
         this.id = idCounter;
         idCounter++;
@@ -47,14 +50,6 @@ public abstract class Animal {
         this.age = age;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public boolean isSex() {
         return sex;
     }
@@ -63,24 +58,32 @@ public abstract class Animal {
         this.sex = sex;
     }
 
-    public String getGenus() {
+    public AnimalSpecifications getAnimalSpecifications() {
+        return animalSpecifications;
+    }
+
+    public Genus getGenus() {
         return genus;
     }
 
-    public void setGenus(String genus) {
+    public void setGenus(Genus genus) {
         this.genus = genus;
     }
 
-    public String getSpecies() {
+    public Species getSpecies() {
         return species;
     }
 
-    public void setSpecies(String species) {
+    public void setSpecies(Species species) {
         this.species = species;
     }
 
-    public AnimalSpecifications getAnimalSpecifications() {
-        return animalSpecifications;
+    public Price getPrice() {
+        return price;
+    }
+
+    public void setPrice(Price price) {
+        this.price = price;
     }
 
     @Override
@@ -96,3 +99,6 @@ public abstract class Animal {
                 "\n" + animalSpecifications;
     }
 }
+
+
+

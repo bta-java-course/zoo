@@ -1,11 +1,13 @@
 package org.btarikool.javacourse.animal.genus.species;
 
+import org.btarikool.javacourse.animal.Allergenic;
+import org.btarikool.javacourse.animal.Noisy;
 import org.btarikool.javacourse.animal.genus.Mammal;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class Horse extends Mammal {
+public class Horse extends Mammal  implements Noisy {
 
     private Set<String> compatibility = new HashSet<>();
 
@@ -24,4 +26,13 @@ public class Horse extends Mammal {
         this.compatibility.add(compatibility);
     }
 
+    @Override
+    public void makesNoise() {
+
+    }
+
+    @Override
+    public void checksCompatibilityWithCustomer() {
+
+    }
 }

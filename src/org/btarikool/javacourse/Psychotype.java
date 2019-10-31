@@ -1,4 +1,4 @@
-package org.btarikool.javacourse.enums;
+package org.btarikool.javacourse;
 
 public enum Psychotype {
     FAST,

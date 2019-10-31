@@ -1,11 +1,13 @@
 package org.btarikool.javacourse.animal.genus.species;
 
+import org.btarikool.javacourse.animal.Allergenic;
+import org.btarikool.javacourse.animal.Noisy;
 import org.btarikool.javacourse.animal.genus.Amphibian;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class Frog extends Amphibian {
+public class Frog extends Amphibian  implements Allergenic, Noisy {
 
     private Set<String> compatibility = new HashSet<>();
 
@@ -24,4 +26,23 @@ public class Frog extends Amphibian {
         this.compatibility.add(compatibility);
     }
 
+    @Override
+    public void makesAllergy() {
+
+    }
+
+    @Override
+    public void checksCompatibilityWithAnimals() {
+
+    }
+
+    @Override
+    public void makesNoise() {
+
+    }
+
+    @Override
+    public void checksCompatibilityWithCustomer() {
+
+    }
 }
