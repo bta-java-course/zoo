@@ -81,12 +81,22 @@ public class newCustomerController extends Application implements Initializable 
     }
 
     private void systemInName(Customer customer) {
+        if (fieldName.getText().matches("\\s*")) {
+            labelError.setText("FIELD NAME: Can not be empty!");
+            rightInput = false;
+            return;
+        }
         customer.setName((fieldName.getText()));
     }
 
     private void systemInAge(Customer customer) {
         if (!fieldAge.getText().matches("\\d+")) {
             labelError.setText(String.format(WRONG_ANSWER, "AGE", "an integer"));
+            rightInput = false;
+            return;
+        }
+        else if (fieldAge.getText().matches("-\\d+|0")) {
+            labelError.setText("FIELD AGE: Can not be minus value or 0!");
             rightInput = false;
             return;
         }
@@ -97,6 +107,11 @@ public class newCustomerController extends Application implements Initializable 
     private void systemInBudget(Customer customer) {
         if (!fieldBudget.getText().matches("\\d+,?\\.?\\d*")) {
             labelError.setText(String.format(WRONG_ANSWER, "BUDGET", "a number"));
+            rightInput = false;
+            return;
+        }
+        else if (fieldBudget.getText().matches("-\\d+|0")) {
+            labelError.setText("FIELD BUDGET: Can not be minus value or 0!");
             rightInput = false;
             return;
         }
