@@ -176,4 +176,5 @@ public abstract class Animal {
                         ", sex='" + sex + '\'' +
                         ", price='" + price + '\'';
     }
+
 }

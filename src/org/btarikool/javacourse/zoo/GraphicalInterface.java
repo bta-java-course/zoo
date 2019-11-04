@@ -1,6 +1,7 @@
 package org.btarikool.javacourse.zoo;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -37,10 +38,7 @@ public class GraphicalInterface extends Application {
 
         Label currency = new Label("Currency*:");
         pane.add(currency, 0, 4);
-        ComboBox<String> currencyList = new ComboBox<>();
-        currencyList.getItems().add("EUR");
-        currencyList.getItems().add("USD");
-        currencyList.getItems().add("YEN");
+        ComboBox<String> currencyList = new ComboBox<>(FXCollections.observableArrayList("EUR", "USD", "YEN"));
         pane.add(currencyList, 1, 4);
 
         Label allergies = new Label("Allergies:");
