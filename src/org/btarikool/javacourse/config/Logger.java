@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 public class Logger {
 
     private final static long LOG_CLEAR_TIME = 60000;
+    private final static String SEPARATOR = "\n-----------------------------------------------------------------------\n";
     private String path = System.getProperty("user.dir").concat("\\log\\" + "%s" + "_log_".concat(String.valueOf(new Date().getTime())).concat(".log"));
     private PrintWriter writer;
 
@@ -26,7 +27,7 @@ public class Logger {
         File logPath = new File(String.format(path, prefix));
         try {
             this.writer = new PrintWriter(new FileWriter(logPath, true), true);
-            writer.write(message + "\n");
+            writer.write(message + SEPARATOR);
             clearLogFiles();
             writer.close();
         } catch (IOException e) {
@@ -38,14 +39,14 @@ public class Logger {
     public void logList(List<Animal> list) {
         String listToString = list.stream().
                         map(animal -> animal.toString()).
-                        collect(Collectors.joining("\n"));
+                        collect(Collectors.joining(SEPARATOR));
         logString(listToString, "animals");
     }
 
     public void logCustomersList(List<Customer> list) {
         String listToString = list.stream().
                 map(customer -> customer.toString()).
-                collect(Collectors.joining("\n"));
+                collect(Collectors.joining(SEPARATOR));
         logString(listToString, "customers");
     }
 

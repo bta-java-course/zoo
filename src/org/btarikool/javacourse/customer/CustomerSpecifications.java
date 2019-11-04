@@ -13,7 +13,7 @@ public class CustomerSpecifications {
     private int volumeOfHousing;
     private boolean livingPlaceIsCity;
     private int age;
-    private List<Noise> noiseList= new ArrayList<>();
+    private Noise noise = new Noise();
     private List<Allergen> allergens = new ArrayList<>();
     private Psychotype psychotype;
 
@@ -56,10 +56,8 @@ public class CustomerSpecifications {
             allergens.add(allergen);
     }
 
-    public void addNoise(Noise.Feature feature) {
-        Noise noise = new Noise();
-        noise.setFeature(feature);
-        noiseList.add(noise);
+    public void setNoise(double level, Noise.Feature feature) {
+        this.noise = new Noise(level, feature);
     }
 
     public Psychotype getPsychoType() {
@@ -76,7 +74,7 @@ public class CustomerSpecifications {
                 "age :" + age +
                 ", volumeOfHousing: " + volumeOfHousing +
                 ", living place is city: " + livingPlaceIsCity +
-                "\nNoise sensitivity: " + noiseList +
+                "\nNoise sensitivity: " + noise +
                 "\nAllergens: " + allergens +
                 "\nPsycho Type: " + psychotype;
     }

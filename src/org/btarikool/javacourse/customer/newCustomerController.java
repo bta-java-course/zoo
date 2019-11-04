@@ -22,21 +22,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class newCustomerController extends Application implements Initializable {
+public class newCustomerController implements Initializable {
 
     private final static String WRONG_ANSWER = "FIELD %s: You entered something else, but not %s.";
     ObservableList<Currency> currencyList = FXCollections.observableArrayList(Currency.values());
+    ObservableList<Noise.Feature> featureList = FXCollections.observableArrayList(Noise.Feature.values());
     private boolean rightInput = true;
     @FXML
     private Label labelError;
     @FXML
     private ChoiceBox choiceBoxCurrency;
     @FXML
+    private ChoiceBox choiceBoxFeature;
+    @FXML
     private TextField fieldName;
     @FXML
     private TextField fieldAge;
     @FXML
     private TextField fieldBudget;
+    @FXML
+    private TextField fieldNoiseLevel;
     @FXML
     private CheckBox checkBoxDandruff;
     @FXML
@@ -103,6 +108,21 @@ public class newCustomerController extends Application implements Initializable 
         else
             customer.getSpecifications().setAge(Integer.parseInt(fieldAge.getText()));
     }
+    private double systemInNoiseLevel() {
+        double level = -1;
+        if (!fieldNoiseLevel.getText().matches("\\d+,?\\.?\\d*")) {
+            labelError.setText(String.format(WRONG_ANSWER, "NOISE LEVEL", "a number"));
+            rightInput = false;
+        }
+        else if (fieldNoiseLevel.getText().matches("-\\d+|0")) {
+            labelError.setText("FIELD NOISE LEVEL: Can not be minus value or 0!");
+            rightInput = false;
+        }
+        else
+            level = (Double.parseDouble(fieldNoiseLevel.getText().replaceAll(",", ".")));
+
+        return level;
+    }
 
     private void systemInBudget(Customer customer) {
         if (!fieldBudget.getText().matches("\\d+,?\\.?\\d*")) {
@@ -130,10 +150,10 @@ public class newCustomerController extends Application implements Initializable 
     }
 
     private void systemInNoiseSensitivity(Customer customer) {
-        if (checkBoxUnexpected.isSelected()) customer.getSpecifications().addNoise(Noise.Feature.UNEXPECTED);
-        if (checkBoxMelodic.isSelected()) customer.getSpecifications().addNoise(Noise.Feature.MELODIC);
-        if (checkBoxSharp.isSelected()) customer.getSpecifications().addNoise(Noise.Feature.SHARP);
-    }
+        double level = systemInNoiseLevel();
+        if (level != -1)
+            customer.getSpecifications().setNoise(level, (Noise.Feature)choiceBoxFeature.getValue());
+        }
 
     @FXML
     private void changeSceneToAdminsPanel() throws IOException {
@@ -155,10 +175,8 @@ public class newCustomerController extends Application implements Initializable 
     public void initialize(URL location, ResourceBundle resources) {
         choiceBoxCurrency.setValue(Currency.EUR);
         choiceBoxCurrency.setItems(currencyList);
+        choiceBoxFeature.setValue(Noise.Feature.MELODIC);
+        choiceBoxFeature.setItems(featureList);
     }
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-
-    }
 }

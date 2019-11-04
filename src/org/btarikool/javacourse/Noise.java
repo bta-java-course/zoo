@@ -19,12 +19,6 @@ public class  Noise {
             this.type = type;
         }
 
-        @Override
-        public String toString() {
-            return "Feature{" +
-                    "type='" + type + '\'' +
-                    '}';
-        }
     }
 
     public Noise() {
@@ -55,7 +49,7 @@ public class  Noise {
     @Override
     public String toString() {
         return "feature: " + feature.name() +
-                "(level: " + level + ")";
+                ", level: " + level;
 
     }
 }

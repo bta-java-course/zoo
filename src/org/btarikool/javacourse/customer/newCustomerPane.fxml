@@ -145,14 +145,23 @@
                     </GridPane.margin>
                 </ChoiceBox>
                 <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="CENTER">
-                    <buttons>
-                        <CheckBox fx:id="checkBoxMelodic" mnemonicParsing="false" text="Melodic" />
-                        <CheckBox fx:id="checkBoxSharp" layoutX="539.0" layoutY="21.0" mnemonicParsing="false" text="Sharp" />
-                        <CheckBox fx:id="checkBoxUnexpected" layoutX="453.0" layoutY="21.0" mnemonicParsing="false" text="Unexpected" />
-                    </buttons>
                     <GridPane.margin>
                         <Insets left="35.0" />
                     </GridPane.margin>
+               <buttons>
+                  <TextField fx:id="fieldNoiseLevel" maxWidth="200.0" minWidth="200.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="200.0" promptText="Should be number" />
+                  <Label maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Noise level: " />
+                  <ChoiceBox fx:id="choiceBoxFeature" nodeOrientation="LEFT_TO_RIGHT">
+                     <contextMenu>
+                        <ContextMenu>
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                              <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                           </items>
+                        </ContextMenu>
+                     </contextMenu>
+                  </ChoiceBox>
+               </buttons>
                 </ButtonBar>
                 <Button fx:id="signUp" mnemonicParsing="false" onAction="#createCustomer" text="Sign up" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
             </children>
