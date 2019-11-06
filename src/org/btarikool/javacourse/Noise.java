@@ -2,6 +2,7 @@ package org.btarikool.javacourse;
 
 public class Noise {
 
+<<<<<<< Updated upstream
     double level;
     Feature feature;
     public static class Feature {
@@ -18,12 +19,27 @@ public class Noise {
             return "Feature{" +
                     "type='" + type + '\'' +
                     '}';
+=======
+    public static final Noise HARD_MELODIC = new Noise(90, new Feature(true, true, false));
+    double level;
+    Feature feature;
+    static class Feature {
+        boolean melodic;
+        boolean sharp;
+        boolean sudden;
+
+        public Feature(boolean melodic, boolean sharp, boolean sudden) {
+            this.melodic = melodic;
+            this.sharp = sharp;
+            this.sudden = sudden;
+>>>>>>> Stashed changes
         }
     }
     public Noise(double level, Feature feature) {
         this.level = level;
         this.feature = feature;
     }
+<<<<<<< Updated upstream
 
     @Override
     public String toString() {
@@ -33,3 +49,6 @@ public class Noise {
                 '}';
     }
 }
+=======
+}
+>>>>>>> Stashed changes

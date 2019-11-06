@@ -1,5 +1,6 @@
 package org.btarikool.javacourse;
 
+<<<<<<< Updated upstream
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -51,4 +52,7 @@ public class WebShop extends Application {
         launch(args);  // Run this Application.
     }
 
+=======
+public class WebShop {
+>>>>>>> Stashed changes
 }

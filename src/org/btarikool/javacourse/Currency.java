@@ -1,6 +1,7 @@
 package org.btarikool.javacourse;
 
 public class Currency {
+
     public static final Currency EUR = new Currency("EUR");
     public static final Currency USD = new Currency("USD");
     public static final Currency RUB = new Currency("RUB");
@@ -15,5 +16,11 @@ public class Currency {
         return "Currency{" +
                 "name='" + name + '\'' +
                 '}';
+
+    public static final Currency EUR = new Currency ();
+    String name;
+    private  Currency(String name){
+
+
     }
 }
