@@ -30,9 +30,17 @@ public class PetShopController implements Initializable
 
     @FXML
     private void changeSceneToNewCustomerPanel() throws IOException {
-        File ne = new File(System.getProperty("user.dir").concat("/src/org/btarikool/javacourse/customer/newCustomerPane.fxml"));
+        File ne = new File(System.getProperty("user.dir").concat("/src/org/btarikool/javacourse/customer/panels/newCustomerPane.fxml"));
         Pane myPane = FXMLLoader.load(ne.toURL());
         PetShopInterface.getMyStage().setTitle("PetShop Vol.1 / New Customer");
+        PetShopInterface.getMyStage().setScene(new Scene(myPane));
+    }
+
+    @FXML
+    private void changeSceneToLogIn() throws IOException {
+        File ne = new File(System.getProperty("user.dir").concat("/src/org/btarikool/javacourse/customer/panels/logInPane.fxml"));
+        Pane myPane = FXMLLoader.load(ne.toURL());
+        PetShopInterface.getMyStage().setTitle("PetShop Vol.1 / Log In");
         PetShopInterface.getMyStage().setScene(new Scene(myPane));
     }
 

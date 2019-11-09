@@ -10,7 +10,7 @@ public class NewCustomerInterface extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Pane myPane = FXMLLoader.load(getClass().getResource("newCustomerPane.fxml"));
+        Pane myPane = FXMLLoader.load(getClass().getResource("panels/newCustomerPane.fxml"));
         primaryStage.setTitle("PetShop Vol.1 / NewUser");
         primaryStage.setScene(new Scene(myPane));
         primaryStage.show();

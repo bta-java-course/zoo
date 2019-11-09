@@ -17,16 +17,23 @@ import java.util.stream.Collectors;
 
 public class Logger {
 
+    private static Logger instance = new Logger();
     private final static long LOG_CLEAR_TIME = 60000;
     private final static String SEPARATOR = "\n-----------------------------------------------------------------------\n";
     private String path = System.getProperty("user.dir").concat("\\log\\" + "%s" + "_log_".concat(String.valueOf(new Date().getTime())).concat(".log"));
     private PrintWriter writer;
 
+    private Logger() {
+    }
+
+    public static Logger getInstance() {
+        return instance;
+    }
 
     public void logString(String message, String prefix) {
         File logPath = new File(String.format(path, prefix));
         try {
-            this.writer = new PrintWriter(new FileWriter(logPath, true), true);
+            this.writer = new PrintWriter(new FileWriter(logPath, false), true);
             writer.write(message + SEPARATOR);
             clearLogFiles();
             writer.close();
@@ -50,9 +57,9 @@ public class Logger {
         logString(listToString, "customers");
     }
 
-    public String listToString(List<Animal> list) {
+    public String listToString(List<?> list) {
         return list.stream().
-                map(animal -> animal.toString()).
+                map(a -> a.toString()).
                 collect(Collectors.joining("\n"));
     }
 

@@ -1,5 +1,6 @@
-package org.btarikool.javacourse.customer;
+package org.btarikool.javacourse.customer.panels;
 
+import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,11 +15,15 @@ import org.btarikool.javacourse.*;
 import org.btarikool.javacourse.animal.genus.Genus;
 import org.btarikool.javacourse.animal.genus.species.Species;
 import org.btarikool.javacourse.config.Logger;
+import org.btarikool.javacourse.customer.Customer;
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -36,6 +41,8 @@ public class newCustomerController implements Initializable {
     private ChoiceBox choiceBoxFeature;
     @FXML
     private TextField fieldName;
+    @FXML
+    private TextField fieldPassword;
     @FXML
     private TextField fieldAge;
     @FXML
@@ -60,29 +67,41 @@ public class newCustomerController implements Initializable {
 
         Customer customer = new Customer();
         systemInName(customer);
+        systemInPassword(customer);
         systemInBudget(customer);
         systemInAge(customer);
         systemInCurrency(customer);
         systemInAllergen(customer);
-        systemInNoiseSensitivity(customer);
+        if (featureList.contains(choiceBoxFeature.getSelectionModel().getSelectedItem()))
+            systemInNoiseSensitivity(customer);
         if (rightInput) addCustomerWithCheck(customer);
+        if (rightInput) {
+            PetShop.getInstance().setLoggedInCustomer(customer);
+            try {
+                changeSceneToLoggedInCustomerPanel();
+            } catch (IOException e) {
+                System.out.println("Change scene to Logged in customer exception");
+                e.printStackTrace();
+            }
+        }
         rightInput = true;
     }
 
     private void addCustomerWithCheck(Customer customer) {
-        boolean duplicated= PetShop.getCollections().getCustomersList().stream().
+        boolean duplicated= Collections.getInstance().getCustomersList().stream().
                 anyMatch(c ->
                         c.getName().equals(customer.getName()) &&
                                 c.getSpecifications().getAge() == customer.getSpecifications().getAge());
         if (duplicated) {
             labelError.setText("Customer with such Name and Age already exists!");
+            rightInput = false;
             return;
         } else {
-            PetShop.getCollections().getCustomersList().add(customer);
+            Collections.getInstance().getCustomersList().add(customer);
             labelError.setText("You are registered! Congrats!");
-            new Logger().logCustomersList(PetShop.getCollections().getCustomersList());
+            Logger.getInstance().logCustomersList(Collections.getInstance().getCustomersList());
         }
-        PetShop.getCollections().getCustomersList().stream().forEach(System.out::println);
+        Collections.getInstance().getCustomersList().stream().forEach(System.out::println);
     }
 
     private void systemInName(Customer customer) {
@@ -92,6 +111,25 @@ public class newCustomerController implements Initializable {
             return;
         }
         customer.setName((fieldName.getText()));
+    }
+
+    private void systemInPassword(Customer customer) {
+        if (fieldPassword.getText().matches("\\s*")) {
+            labelError.setText("FIELD Password: Can not be empty!");
+            rightInput = false;
+            return;
+        }
+        else if (fieldPassword.getText().length() < 8) {
+            labelError.setText("FIELD Password: Should be min. 8 symbols!");
+            rightInput = false;
+            return;
+        }
+        else if (!fieldPassword.getText().matches("\\w+")) {
+            labelError.setText("FIELD Password: May be only english cars!");
+            rightInput = false;
+            return;
+        }
+        customer.setPassword(Base64.getDecoder().decode(fieldPassword.getText()));
     }
 
     private void systemInAge(Customer customer) {
@@ -140,6 +178,11 @@ public class newCustomerController implements Initializable {
     }
 
     private void systemInCurrency(Customer customer) {
+        if (!(choiceBoxCurrency.getSelectionModel().getSelectedItem() instanceof Currency)) {
+            labelError.setText("FIELD CURRENCY: Please choose currency!");
+            rightInput = false;
+            return;
+        }
         customer.getBudget().setCurrency((Currency)choiceBoxCurrency.getValue());
     }
 
@@ -156,6 +199,10 @@ public class newCustomerController implements Initializable {
         }
 
     @FXML
+    private void choiceBoxFeatureOnAction() {
+        if (choiceBoxFeature.getSelectionModel().getSelectedItem() instanceof Noise.Feature) fieldNoiseLevel.setEditable(true);
+        }
+    @FXML
     private void changeSceneToAdminsPanel() throws IOException {
         File ne = new File(System.getProperty("user.dir").concat("/src/org/btarikool/javacourse/admin/adminsPane.fxml"));
         Pane myPane = FXMLLoader.load(ne.toURL());
@@ -171,12 +218,21 @@ public class newCustomerController implements Initializable {
         PetShopInterface.getMyStage().setScene(new Scene(myPane));
     }
 
+    @FXML
+    private void changeSceneToLoggedInCustomerPanel() throws IOException {
+        File ne = new File(System.getProperty("user.dir").concat("/src/org/btarikool/javacourse/customer/panels/loggedInCustomerPane.fxml"));
+        Pane myPane = FXMLLoader.load(ne.toURL());
+        PetShopInterface.getMyStage().setTitle("PetShop Vol.1 / Customer's Panel");
+        PetShopInterface.getMyStage().setScene(new Scene(myPane));
+    }
+
 
     public void initialize(URL location, ResourceBundle resources) {
-        choiceBoxCurrency.setValue(Currency.EUR);
+        choiceBoxCurrency.setValue("");
         choiceBoxCurrency.setItems(currencyList);
-        choiceBoxFeature.setValue(Noise.Feature.MELODIC);
+        choiceBoxFeature.setValue("");
         choiceBoxFeature.setItems(featureList);
+        fieldNoiseLevel.setEditable(false);
     }
 
 }

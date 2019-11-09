@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import org.btarikool.javacourse.Collections;
 import org.btarikool.javacourse.PetShop;
 import org.btarikool.javacourse.PetShopInterface;
 import org.btarikool.javacourse.animal.genus.Genus;
@@ -28,79 +29,82 @@ public class AdminController implements Initializable
 
     @FXML
     public void saveLog() {
-        new Logger().saveLogWithPathChooser(mainText.getText(), "animals");
-        //new Logger().logString(mainText.getText());
+        Logger.getInstance().saveLogWithPathChooser(mainText.getText(), "animals");
+        //Logger.getInstance().logString(mainText.getText());
     }
     public void getTotalCost() {
-        mainText.setText(String.valueOf(PetShop.getCollections().getAnimalsTotalCost()));
+        mainText.setText(String.valueOf(Collections.getInstance().getAnimalsTotalCost()));
     }
     public void getAnimals() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsList()));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsList()));
     }
     public void getSortedByName() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListSortedNick()));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListSortedNick()));
     }
     public void getSortedByGenus() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListSortedGenus()));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListSortedGenus()));
     }
     public void getSortedBySpecies() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListSortedSpecies()));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListSortedSpecies()));
     }
     public void getSortedByPriceHighFirst() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListSortedPriceHighestFirst()));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListSortedPriceHighestFirst()));
     }
     public void getSortedByPriceLowFirst() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListSortedPriceLowestFirst()));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListSortedPriceLowestFirst()));
     }
     public void getBony() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListFilteredSpecies(Species.BONY)));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListFilteredSpecies(Species.BONY)));
     }
     public void getGoldy() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListFilteredSpecies(Species.GOLDY)));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListFilteredSpecies(Species.GOLDY)));
     }
     public void getCat() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListFilteredSpecies(Species.CAT)));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListFilteredSpecies(Species.CAT)));
     }
     public void getDog() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListFilteredSpecies(Species.DOG)));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListFilteredSpecies(Species.DOG)));
     }
     public void getHorse() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListFilteredSpecies(Species.HORSE)));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListFilteredSpecies(Species.HORSE)));
     }
     public void getTurtle() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListFilteredSpecies(Species.TURTLE)));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListFilteredSpecies(Species.TURTLE)));
     }
     public void getCrocodile() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListFilteredSpecies(Species.CROCODILE)));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListFilteredSpecies(Species.CROCODILE)));
     }
     public void getParrot() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListFilteredSpecies(Species.PARROT)));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListFilteredSpecies(Species.PARROT)));
     }
     public void getFrog() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListFilteredSpecies(Species.FROG)));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListFilteredSpecies(Species.FROG)));
     }
     public void getAmphibian() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListFilteredGenus(Genus.AMPHIBIAN)));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListFilteredGenus(Genus.AMPHIBIAN)));
     }
     public void getBird() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListFilteredGenus(Genus.BIRD)));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListFilteredGenus(Genus.BIRD)));
     }
     public void getFish() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListFilteredGenus(Genus.FISH)));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListFilteredGenus(Genus.FISH)));
     }
     public void getMammal() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListFilteredGenus(Genus.MAMMAL)));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListFilteredGenus(Genus.MAMMAL)));
     }
     public void getReptile() {
-        mainText.setText(new Logger().listToString(PetShop.getCollections().getAnimalsListFilteredGenus(Genus.REPTILE)));
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getAnimalsListFilteredGenus(Genus.REPTILE)));
     }
     public void addNewAnimal() {
-        String basicInfo = "animal." + (PetShop.getCollections().getAnimalsList().size() + 2);
+        String basicInfo = "animal." + (Collections.getInstance().getAnimalsList().size() + 2);
+    }
+    public void getCustomers() {
+        mainText.setText(Logger.getInstance().listToString(Collections.getInstance().getCustomersList()));
     }
 
     @FXML
     private void changeSceneToNewCustomerPanel() throws IOException {
-        File ne = new File(System.getProperty("user.dir").concat("/src/org/btarikool/javacourse/customer/newCustomerPane.fxml"));
+        File ne = new File(System.getProperty("user.dir").concat("/src/org/btarikool/javacourse/customer/panels/newCustomerPane.fxml"));
         Pane myPane = FXMLLoader.load(ne.toURL());
         PetShopInterface.getMyStage().setTitle("PetShop Vol.1 / New Customer");
         PetShopInterface.getMyStage().setScene(new Scene(myPane));

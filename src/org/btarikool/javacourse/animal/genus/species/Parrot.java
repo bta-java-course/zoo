@@ -1,5 +1,7 @@
 package org.btarikool.javacourse.animal.genus.species;
 
+import org.btarikool.javacourse.Allergen;
+import org.btarikool.javacourse.Noise;
 import org.btarikool.javacourse.animal.Allergenic;
 import org.btarikool.javacourse.animal.AnimalSpecifications;
 import org.btarikool.javacourse.animal.Noisy;
@@ -9,7 +11,7 @@ import org.btarikool.javacourse.animal.genus.Bird;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Parrot extends Bird  implements Noisy {
+public class Parrot extends Bird  implements Allergenic, Noisy {
 
     public Parrot() {
     }
@@ -20,11 +22,11 @@ public class Parrot extends Bird  implements Noisy {
 
     @Override
     public void makesNoise() {
-
+        this.getAnimalSpecifications().setNoise(new Noise(45.4, Noise.Feature.MELODIC));
     }
 
     @Override
-    public void checksCompatibilityWithCustomer() {
-
+    public void makesAllergy() {
+        this.getAnimalSpecifications().setAllergens(Allergen.URINE, Allergen.SALVIA);
     }
 }

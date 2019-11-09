@@ -60,6 +60,10 @@ public class CustomerSpecifications {
         this.noise = new Noise(level, feature);
     }
 
+    public Noise getNoise() {
+        return noise;
+    }
+
     public Psychotype getPsychoType() {
         return psychotype;
     }

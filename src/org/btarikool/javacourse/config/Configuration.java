@@ -3,7 +3,9 @@ package org.btarikool.javacourse.config;
 
 import com.sun.xml.internal.ws.util.StringUtils;
 import org.btarikool.javacourse.Currency;
+import org.btarikool.javacourse.animal.Allergenic;
 import org.btarikool.javacourse.animal.Animal;
+import org.btarikool.javacourse.animal.Noisy;
 import org.btarikool.javacourse.animal.genus.Genus;
 import org.btarikool.javacourse.animal.genus.species.Species;
 
@@ -12,6 +14,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Configuration {
+
+    private static Configuration instance = new Configuration();
 
     private static final File PROPPATH = new File(System.getProperty("user.dir").
             concat("\\conf\\petshop.properties"));
@@ -33,10 +37,13 @@ public class Configuration {
     }
 
     private Configuration() {
-
     }
 
-    public static void fillAnimalsList(List<Animal> list) {
+    public static Configuration getInstance() {
+        return instance;
+    }
+
+    public void fillAnimalsList(List<Animal> list) {
         Map<String, String> tempMap = createNextAnimalMap();
         Animal animal = getSpeciesClass(tempMap);
         newAnimalInitialisation(tempMap, animal);
@@ -44,7 +51,7 @@ public class Configuration {
         while (getAnimalsCountInMap() > 0) fillAnimalsList(list);
     }
 
-    private static void newAnimalInitialisation(Map<String, String> tempMap, Animal animal) {
+    private void newAnimalInitialisation(Map<String, String> tempMap, Animal animal) {
         animal.setNick(StringUtils.capitalize(tempMap.get("nick")));
         animal.setAge(Integer.parseInt(tempMap.get("age")));
         animal.setSex(tempMap.get("sex").equals("true") ? true : false);
@@ -52,15 +59,15 @@ public class Configuration {
         animal.setSpecies(Species.valueOf(tempMap.get("species").toUpperCase()));
         animal.getPrice().setPrice(Double.parseDouble(tempMap.get("price")));
         animal.getPrice().setCurrency(Currency.EUR);
-        animal.getAnimalSpecifications().setLoud(tempMap.get("isLoud").equals("true") ? true : false);
         animal.getAnimalSpecifications().setCityLivingAble(tempMap.get("cityLivingAble").equals("true") ? true : false);
         animal.getAnimalSpecifications().setSize(Double.parseDouble(tempMap.get("size")));
         animal.getAnimalSpecifications().setLivingYears(Integer.parseInt(tempMap.get("livingYears")));
-        animal.getAnimalSpecifications().setAllergens(tempMap.get("allergen").toUpperCase().split(","));
         animal.getAnimalSpecifications().setPsychotype(tempMap.get("psychoType").toUpperCase());
+        if (animal instanceof Allergenic) ((Allergenic) animal).makesAllergy();
+        if (animal instanceof Noisy) ((Noisy) animal).makesNoise();
     }
 
-    public static void addAnimalToProp(String[] props) {
+    public void addAnimalToProp(String[] props) {
         try (RandomAccessFile ra = new RandomAccessFile(PROPPATH, "rw")){
             ra.seek(PROPPATH.length());
             String newProp = Arrays.asList(props).stream().collect(Collectors.joining("\n"));
@@ -70,7 +77,7 @@ public class Configuration {
         }
     }
 
-    private static Animal getSpeciesClass(Map<String, String> tempMap) {
+    private Animal getSpeciesClass(Map<String, String> tempMap) {
         Animal animal = null;
         try {
             Class clazz = Class.forName("org.btarikool.javacourse.animal.genus.species."
@@ -82,14 +89,14 @@ public class Configuration {
         return animal;
     }
 
-    private static Map<String, String> createNextAnimalMap() {
+    private Map<String, String> createNextAnimalMap() {
         int animalFromMap = getAnimalsCountInMap();
         Map<String, String> tempMap = new HashMap<>();
         stringToHashMap(getInfoString(animalFromMap), tempMap);
         return tempMap;
     }
 
-    private static String getInfoString(int i) {
+    private String getInfoString(int i) {
         String info =  map.entrySet().stream().filter(a ->
                 a.getKey().equals(BASICINFO + i) ||
                 a.getKey().equals(SUBINFO + i)||
@@ -100,13 +107,13 @@ public class Configuration {
         return info;
     }
 
-    private static void removeInfoFromMap(int i) {
+    private void removeInfoFromMap(int i) {
         map.remove(BASICINFO + i);
         map.remove(SUBINFO + i);
         map.remove(SPECIFICINFO + i);
     }
 
-    private static void stringToHashMap(String string, Map<String, String> tempMap) {
+    private void stringToHashMap(String string, Map<String, String> tempMap) {
      Arrays.asList(string.split(";")).stream().
              map(next -> next.split(":")).
              collect(Collectors.toMap(
@@ -116,7 +123,7 @@ public class Configuration {
              forEach((a, b) -> tempMap.put(a, b));
     }
 
-    private static int getAnimalsCountInMap() {
+    private int getAnimalsCountInMap() {
         int eachAnimalLinesCountInProp = 3;
         return map != null && map.size() > 0 ? map.size() / eachAnimalLinesCountInProp : 0;
     }

@@ -11,12 +11,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Collections {
-    private List<Animal> animalsList;
-    private List<Customer> customersList;
+    private static Collections instance = new Collections();
+    private List<Animal> animalsList = new ArrayList<>();
+    private List<Customer> customersList = new ArrayList<>();
 
-    public Collections() {
-        this.animalsList = new ArrayList<>();
-        this.customersList = new ArrayList<>();
+    private Collections() {
+    }
+
+    public static Collections getInstance() {
+        return instance;
     }
 
     public List<Animal> getAnimalsList() {

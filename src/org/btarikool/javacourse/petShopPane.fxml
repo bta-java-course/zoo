@@ -25,6 +25,25 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
+      <GridPane GridPane.columnSpan="2" GridPane.rowIndex="2">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1">
+              <buttons>
+                  <Button fx:id="buttonLogIn" mnemonicParsing="false" onAction="#changeSceneToLogIn" text="Log In" />
+              </buttons>
+            </ButtonBar>
+         </children>
+         <padding>
+            <Insets right="20.0" />
+         </padding>
+      </GridPane>
         <MenuBar GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
             <menus>
                 <Menu mnemonicParsing="false" text="File" />
@@ -35,7 +54,7 @@
                 <Font name="Segoe UI Black" size="46.0" />
             </font>
         </Label>
-        <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+        <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
             <buttons>
                 <Button fx:id="buttonAdminPanel" mnemonicParsing="false" onAction="#changeSceneToAdminsPanel" text="Admins Panel" />
             <Button fx:id="buttonNewCustomer" layoutX="1162.0" layoutY="18.0" mnemonicParsing="false" onAction="#changeSceneToNewCustomerPanel" text="New Customer" />

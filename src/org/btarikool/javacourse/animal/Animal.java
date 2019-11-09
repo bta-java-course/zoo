@@ -99,6 +99,10 @@ public abstract class Animal {
         this.price = price;
     }
 
+    public static int getIdCounter() {
+        return idCounter;
+    }
+
     @Override
     public String toString() {
         return "SubInfo: " +

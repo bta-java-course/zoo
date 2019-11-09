@@ -1,8 +1,5 @@
 package org.btarikool.javacourse;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class  Noise {
 
     double level;
@@ -48,8 +45,11 @@ public class  Noise {
 
     @Override
     public String toString() {
-        return "feature: " + feature.name() +
-                ", level: " + level;
-
+        boolean notNull = feature != null;
+        if (notNull)
+            return "feature: " + feature.name() +
+                    ", level: " + level;
+        else
+            return "empty";
     }
 }

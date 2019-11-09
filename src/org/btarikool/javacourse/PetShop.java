@@ -4,15 +4,20 @@ import javafx.application.Application;
 import org.btarikool.javacourse.admin.AdminInterface;
 import org.btarikool.javacourse.animal.genus.species.Species;
 import org.btarikool.javacourse.config.Configuration;
+import org.btarikool.javacourse.customer.Customer;
 import org.btarikool.javacourse.customer.NewCustomerInterface;
 
 
 public class PetShop {
 
-    private static Collections collections = new Collections();
+    private static PetShop instance = new PetShop();
+    private Customer loggedInCustomer;
+
+    private PetShop() {
+    }
 
     static {
-        Configuration.fillAnimalsList(collections.getAnimalsList());
+        Configuration.getInstance().fillAnimalsList(Collections.getInstance().getAnimalsList());
     }
 
     public static void main(String[] args) {
@@ -32,7 +37,16 @@ public class PetShop {
 
     }
 
-    public static Collections getCollections() {
-        return collections;
+    public static PetShop getInstance() {
+        return instance;
     }
+
+    public Customer getLoggedInCustomer() {
+        return loggedInCustomer;
+    }
+
+    public void setLoggedInCustomer(Customer loggedInCustomer) {
+        this.loggedInCustomer = loggedInCustomer;
+    }
+
 }

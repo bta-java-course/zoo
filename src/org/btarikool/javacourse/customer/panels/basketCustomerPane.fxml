@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane fx:id="adminsPane" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.btarikool.javacourse.customer.panels.basketCustomerController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="262.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="200.0" minHeight="200.0" prefHeight="200.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="41.0" minHeight="41.0" prefHeight="41.0" />
+        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="622.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <MenuBar GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+            <menus>
+                <Menu mnemonicParsing="false" text="File" />
+            </menus>
+        </MenuBar>
+        <Label text="PetShop" textFill="#6b6b6b" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <font>
+                <Font name="Segoe UI Black" size="46.0" />
+            </font>
+        </Label>
+        <GridPane fx:id="mainGrid" GridPane.columnSpan="2" GridPane.rowIndex="3">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                <ColumnConstraints hgrow="SOMETIMES" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+            <Button fx:id="buttonBuy" mnemonicParsing="false" onAction="#onButtonBuyAction" text="Buy" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                <Label fx:id="labelError" alignment="CENTER" contentDisplay="CENTER" maxHeight="20.0" maxWidth="600.0" minHeight="20.0" minWidth="600.0" prefHeight="20.0" prefWidth="600.0" textFill="RED" textOverrun="CENTER_ELLIPSIS" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                <Label text="Matching animals list to bye:" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <GridPane fx:id="listGrid" GridPane.columnSpan="2" GridPane.rowIndex="2">
+              <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
+                <ColumnConstraints hgrow="SOMETIMES" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints />
+              </rowConstraints>
+               <opaqueInsets>
+                  <Insets bottom="20.0" />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets left="30.0" right="30.0" />
+               </GridPane.margin>
+            </GridPane>
+
+            </children>
+        </GridPane>
+        <ButtonBar nodeOrientation="RIGHT_TO_LEFT" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <GridPane.margin>
+                <Insets left="20.0" right="20.0" />
+            </GridPane.margin>
+         <buttons>
+            <Button fx:id="buttonBackShopping" mnemonicParsing="false" onAction="#changeSceneToLoggedInCustomerPanel" text="Continue shopping" />
+         </buttons>
+        </ButtonBar>
+        <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+        <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+      <Label textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
+            <ColumnConstraints maxWidth="120.0" minWidth="120.0" prefWidth="120.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="135.5999969482422" minHeight="10.0" prefHeight="100.8" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="109.39998779296874" minHeight="10.0" prefHeight="99.2" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="buttomBasket" blendMode="MULTIPLY" mnemonicParsing="false" textOverrun="CENTER_WORD_ELLIPSIS" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <graphic>
+                  <ImageView fx:id="buttonBasket" cache="true" fitHeight="61.0" fitWidth="71.0" focusTraversable="true" onDragDetected="#changeSceneToBasketPanel" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/shopping-basket-1509761-1277298.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" />
+               </GridPane.margin>
+            </Button>
+            <GridPane GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="labelCustomerName" layoutX="10.0" layoutY="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <Label fx:id="labelMoneyLeft" layoutX="131.0" layoutY="57.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="labelMoney" layoutX="65.0" layoutY="69.0" text="Money left:" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="You are logged in as:" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="labelName" layoutX="10.0" layoutY="85.0" text="Name:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin>
+                  </Label>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints halignment="CENTER" />
+               </columnConstraints>
+            </GridPane>
+         </children>
+      </GridPane>
+      <Button fx:id="buttonLogOut" maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#logOut" prefWidth="100.0" text="Log Out" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets left="20.0" right="20.0" />
+         </GridPane.margin>
+      </Button>
+    </children>
+</GridPane>

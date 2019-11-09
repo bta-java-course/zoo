@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="adminsPane" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.btarikool.javacourse.customer.newCustomerController">
+<GridPane fx:id="adminsPane" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.btarikool.javacourse.customer.panels.newCustomerController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -62,6 +62,7 @@
                 <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
@@ -78,12 +79,12 @@
                         <Insets left="35.0" />
                     </GridPane.margin>
                 </TextField>
-                <TextField fx:id="fieldAge" layoutX="700.0" layoutY="57.0" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" promptText="Should be integer" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                <TextField fx:id="fieldAge" layoutX="700.0" layoutY="57.0" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" promptText="Should be integer" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                     <GridPane.margin>
                         <Insets left="35.0" />
                     </GridPane.margin>
                 </TextField>
-                <TextField fx:id="fieldBudget" layoutX="700.0" layoutY="97.0" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" promptText="Should be number" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                <TextField fx:id="fieldBudget" layoutX="700.0" layoutY="97.0" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" promptText="Should be number" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                     <GridPane.margin>
                         <Insets left="35.0" />
                     </GridPane.margin>
@@ -93,27 +94,27 @@
                         <Insets right="35.0" />
                     </GridPane.margin>
                 </Label>
-                <Label layoutX="565.0" layoutY="61.0" text="Age*:" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                <Label layoutX="565.0" layoutY="61.0" text="Age*:" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                     <GridPane.margin>
                         <Insets right="35.0" />
                     </GridPane.margin>
                 </Label>
-                <Label layoutX="576.0" layoutY="101.0" text="Budget*:" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                <Label layoutX="576.0" layoutY="101.0" text="Budget*:" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                     <GridPane.margin>
                         <Insets right="35.0" />
                     </GridPane.margin>
                 </Label>
-                <Label layoutX="559.0" layoutY="141.0" text="Currensy*:" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                <Label layoutX="559.0" layoutY="141.0" text="Currensy*:" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                     <GridPane.margin>
                         <Insets right="35.0" />
                     </GridPane.margin>
                 </Label>
-                <Label layoutX="550.0" layoutY="181.0" text="Allergy:" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                <Label layoutX="550.0" layoutY="181.0" text="Allergy:" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                     <GridPane.margin>
                         <Insets right="35.0" />
                     </GridPane.margin>
                 </Label>
-                <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                     <buttons>
                         <CheckBox fx:id="checkBoxSalvia" mnemonicParsing="false" text="Salvia" />
                         <CheckBox fx:id="checkBoxUrine" layoutX="524.0" layoutY="21.0" mnemonicParsing="false" text="Urine" />
@@ -126,12 +127,12 @@
                         <Insets left="35.0" />
                     </GridPane.margin>
                 </ButtonBar>
-                <Label layoutX="575.0" layoutY="221.0" text="Noise sensitivity:" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                <Label layoutX="575.0" layoutY="221.0" text="Noise sensitivity:" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="CENTER">
                     <GridPane.margin>
                         <Insets right="35.0" />
                     </GridPane.margin>
                 </Label>
-                <ChoiceBox fx:id="choiceBoxCurrency" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                <ChoiceBox fx:id="choiceBoxCurrency" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                     <contextMenu>
                         <ContextMenu>
                             <items>
@@ -144,14 +145,14 @@
                         <Insets left="35.0" />
                     </GridPane.margin>
                 </ChoiceBox>
-                <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="CENTER">
                     <GridPane.margin>
                         <Insets left="35.0" />
                     </GridPane.margin>
                <buttons>
                   <TextField fx:id="fieldNoiseLevel" maxWidth="200.0" minWidth="200.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="200.0" promptText="Should be number" />
                   <Label maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Noise level: " />
-                  <ChoiceBox fx:id="choiceBoxFeature" nodeOrientation="LEFT_TO_RIGHT">
+                  <ChoiceBox fx:id="choiceBoxFeature" nodeOrientation="LEFT_TO_RIGHT" onAction="#choiceBoxFeatureOnAction">
                      <contextMenu>
                         <ContextMenu>
                            <items>
@@ -163,7 +164,17 @@
                   </ChoiceBox>
                </buttons>
                 </ButtonBar>
-                <Button fx:id="signUp" mnemonicParsing="false" onAction="#createCustomer" text="Sign up" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+                <Button fx:id="signUp" mnemonicParsing="false" onAction="#createCustomer" text="Sign up" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
+            <Label layoutX="485.0" layoutY="101.0" text="Password*:" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets right="35.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="fieldPassword" layoutX="596.0" layoutY="97.0" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="35.0" />
+               </GridPane.margin>
+            </TextField>
             </children>
         </GridPane>
     </children>

@@ -46,6 +46,7 @@
         </Label>
         <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
             <buttons>
+            <Button fx:id="customers" layoutX="376.0" layoutY="18.0" maxWidth="150.0" minWidth="150.0" mnemonicParsing="false" onAction="#getCustomers" text="Customers" />
                 <Button fx:id="totalCost" maxWidth="150.0" minWidth="150.0" mnemonicParsing="false" onAction="#getTotalCost" text="Animals total cost" />
                 <MenuButton fx:id="filterBy1" contentDisplay="CENTER" maxWidth="150.0" minWidth="150.0" mnemonicParsing="false" text="Filter by species">
                     <items>

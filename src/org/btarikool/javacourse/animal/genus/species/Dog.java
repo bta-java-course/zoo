@@ -1,5 +1,7 @@
 package org.btarikool.javacourse.animal.genus.species;
 
+import org.btarikool.javacourse.Allergen;
+import org.btarikool.javacourse.Noise;
 import org.btarikool.javacourse.animal.Allergenic;
 import org.btarikool.javacourse.animal.AnimalSpecifications;
 import org.btarikool.javacourse.animal.Noisy;
@@ -20,21 +22,12 @@ public class Dog extends Mammal implements Allergenic, Noisy {
 
     @Override
     public void makesAllergy() {
-
-    }
-
-    @Override
-    public void checksCompatibilityWithAnimals() {
-
+        this.getAnimalSpecifications().setAllergens(Allergen.URINE, Allergen.SALVIA, Allergen.DANDRUFF);
     }
 
     @Override
     public void makesNoise() {
-
+        this.getAnimalSpecifications().setNoise(new Noise(32.6, Noise.Feature.SHARP));
     }
 
-    @Override
-    public void checksCompatibilityWithCustomer() {
-
-    }
 }
