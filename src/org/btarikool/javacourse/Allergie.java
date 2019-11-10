@@ -10,18 +10,11 @@ public enum Allergie {
         FUR.nonCompliant = SMELL;
         SMELL.nonCompliant = FUR;
     }
-/*
-    private Allergie(String nonCompliance) {
-        this.nonCompliant = Allergie.valueOf(nonCompliance);
-        this.nonCompliant = nonCompliant;
-    }
-*/
-
     @Override
     public String toString() {
         return "Allergie{" +
                 "name=" + this.name() +
-                ", nonCompliant='" + this.nonCompliant.name() + '\'' +
+                ", nonCompliant=" + this.nonCompliant.name() +
                 '}';
     }
 }

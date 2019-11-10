@@ -13,6 +13,7 @@ import java.util.List;
 
 public class WebShop extends Application {
     public void start(Stage stage) {
+        PetShop.initAnimals();
         GridPane pane = new GridPane();    // создаем область с абс.
         pane.setPadding(new Insets(20)); // устанавливаем
         pane.setHgap(25);                    // внешние горизонтальные
