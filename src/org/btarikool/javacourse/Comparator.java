@@ -24,7 +24,7 @@ public class Comparator {
         checkingList.add(checkForNoise(customer, animal));
         checkingList.add(checkForPrice(customer, animal));
         checkingList.add(checkForAllergen(customer, animal));
-        checkingList.stream().forEach(System.out::println);
+        checkingList.forEach(System.out::println);
         return !checkingList.contains(false);
     }
 

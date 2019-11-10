@@ -3,8 +3,6 @@ package org.btarikool.javacourse.customer;
 import org.btarikool.javacourse.Allergen;
 import org.btarikool.javacourse.Noise;
 import org.btarikool.javacourse.Psychotype;
-import org.btarikool.javacourse.animal.Noisy;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -49,7 +47,6 @@ public class CustomerSpecifications {
         if (allergen.length > 0 && !allergen[0].equals(""))
             Arrays.stream(allergen).
                     forEach(a -> this.allergens.add(Allergen.valueOf(a)));
-        else return;
     }
 
     public void setAllergens(Allergen allergen) {

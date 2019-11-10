@@ -10,8 +10,8 @@ public interface Allergenic {
         if (customer.getSpecifications().getAllergens().isEmpty())
             return true;
         else
-            return !customer.getSpecifications().getAllergens().stream().
-                    anyMatch(a -> animal.getAnimalSpecifications().getAllergens().contains(a));
+            return customer.getSpecifications().getAllergens().stream().
+                    noneMatch(a -> animal.getAnimalSpecifications().getAllergens().contains(a));
     }
 
     default boolean checksCompatibilityAnimals(Customer customer, Animal animal) {

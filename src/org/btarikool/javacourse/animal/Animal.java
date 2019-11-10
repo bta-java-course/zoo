@@ -112,7 +112,7 @@ public abstract class Animal {
                 ", Species: " + species +
                 ", Age: " + age +
                 ", " + price +
-                ", Sex: " + (sex == true ? "Male" : "Female") +
+                ", Sex: " + (sex ? "Male" : "Female") +
                 "\n" + animalSpecifications;
     }
 }

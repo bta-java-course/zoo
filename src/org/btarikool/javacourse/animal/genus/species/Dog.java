@@ -8,9 +8,6 @@ import org.btarikool.javacourse.animal.Noisy;
 import org.btarikool.javacourse.animal.Price;
 import org.btarikool.javacourse.animal.genus.Mammal;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Dog extends Mammal implements Allergenic, Noisy {
 
     public Dog() {

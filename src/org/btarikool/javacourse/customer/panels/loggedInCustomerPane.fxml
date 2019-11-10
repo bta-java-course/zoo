@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="adminsPane" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.btarikool.javacourse.customer.panels.loggedInCustomerController">
+<GridPane fx:id="adminsPane" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.btarikool.javacourse.customer.panels.LoggedInCustomerController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -52,7 +52,7 @@
             <children>
             <Button fx:id="buttonAddToBasket" mnemonicParsing="false" onAction="#addToBasketAction" text="Add to Basket" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
                 <Label fx:id="labelError" alignment="CENTER" contentDisplay="CENTER" maxHeight="20.0" maxWidth="600.0" minHeight="20.0" minWidth="600.0" prefHeight="20.0" prefWidth="600.0" textFill="RED" textOverrun="CENTER_ELLIPSIS" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                <Label text="Matching animals list to bye:" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                <Label fx:id="labelTopText" text="Matching animals list to bye:" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
             <GridPane fx:id="listGrid" GridPane.columnSpan="2" GridPane.rowIndex="2">
               <columnConstraints>
                 <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
@@ -78,6 +78,10 @@
             <GridPane.margin>
                 <Insets left="20.0" right="20.0" />
             </GridPane.margin>
+            <buttons>
+                <Button fx:id="buttonHistory" layoutX="560.0" layoutY="18.0" mnemonicParsing="false" onAction="#showPurchaseHistory" text="My purchase history" />
+                <Button fx:id="buttonBackShopping" mnemonicParsing="false" onAction="#changeSceneToLoggedInCustomerPanel" text="Continue shopping" />
+            </buttons>
         </ButtonBar>
         <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
         <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.valignment="TOP" />

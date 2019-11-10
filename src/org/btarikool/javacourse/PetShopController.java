@@ -4,13 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import org.btarikool.javacourse.animal.genus.Genus;
-import org.btarikool.javacourse.animal.genus.species.Species;
-import org.btarikool.javacourse.config.Logger;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -20,27 +14,29 @@ public class PetShopController implements Initializable
 
 {
 
+    public static final String PROPERTY = System.getProperty("user.dir");
+    public static final String PATH = "/src/org/btarikool/javacourse/";
+    public static final String PET_SHOP_VOL_1 = "PetShop Vol.1";
+
     @FXML
     private void changeSceneToAdminsPanel() throws IOException {
-        File ne = new File(System.getProperty("user.dir").concat("/src/org/btarikool/javacourse/admin/adminsPane.fxml"));
-        Pane myPane = FXMLLoader.load(ne.toURL());
-        PetShopInterface.getMyStage().setTitle("PetShop Vol.1 / Admins Panel");
-        PetShopInterface.getMyStage().setScene(new Scene(myPane));
+        changeScene("admin/adminsPane.fxml", PET_SHOP_VOL_1 + " / Admins Panel");
     }
 
     @FXML
     private void changeSceneToNewCustomerPanel() throws IOException {
-        File ne = new File(System.getProperty("user.dir").concat("/src/org/btarikool/javacourse/customer/panels/newCustomerPane.fxml"));
-        Pane myPane = FXMLLoader.load(ne.toURL());
-        PetShopInterface.getMyStage().setTitle("PetShop Vol.1 / New Customer");
-        PetShopInterface.getMyStage().setScene(new Scene(myPane));
+        changeScene("customer/panels/newCustomerPane.fxml", PET_SHOP_VOL_1 + " / New Customer");
     }
 
     @FXML
     private void changeSceneToLogIn() throws IOException {
-        File ne = new File(System.getProperty("user.dir").concat("/src/org/btarikool/javacourse/customer/panels/logInPane.fxml"));
+        changeScene("customer/panels/logInPane.fxml", PET_SHOP_VOL_1 + " / Log In");
+    }
+
+    private void changeScene(String s, String s2) throws IOException {
+        File ne = new File(PROPERTY.concat(PATH + s));
         Pane myPane = FXMLLoader.load(ne.toURL());
-        PetShopInterface.getMyStage().setTitle("PetShop Vol.1 / Log In");
+        PetShopInterface.getMyStage().setTitle(s2);
         PetShopInterface.getMyStage().setScene(new Scene(myPane));
     }
 

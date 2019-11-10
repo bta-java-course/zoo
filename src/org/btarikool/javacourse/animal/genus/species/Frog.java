@@ -8,9 +8,6 @@ import org.btarikool.javacourse.animal.Noisy;
 import org.btarikool.javacourse.animal.Price;
 import org.btarikool.javacourse.animal.genus.Amphibian;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Frog extends Amphibian  implements Allergenic, Noisy {
 
     public Frog() {

@@ -54,12 +54,12 @@ public class Configuration {
     private void newAnimalInitialisation(Map<String, String> tempMap, Animal animal) {
         animal.setNick(StringUtils.capitalize(tempMap.get("nick")));
         animal.setAge(Integer.parseInt(tempMap.get("age")));
-        animal.setSex(tempMap.get("sex").equals("true") ? true : false);
+        animal.setSex(tempMap.get("sex").equals("true"));
         animal.setGenus(Genus.valueOf(tempMap.get("genus").toUpperCase()));
         animal.setSpecies(Species.valueOf(tempMap.get("species").toUpperCase()));
         animal.getPrice().setPrice(Double.parseDouble(tempMap.get("price")));
         animal.getPrice().setCurrency(Currency.EUR);
-        animal.getAnimalSpecifications().setCityLivingAble(tempMap.get("cityLivingAble").equals("true") ? true : false);
+        animal.getAnimalSpecifications().setCityLivingAble(tempMap.get("cityLivingAble").equals("true"));
         animal.getAnimalSpecifications().setSize(Double.parseDouble(tempMap.get("size")));
         animal.getAnimalSpecifications().setLivingYears(Integer.parseInt(tempMap.get("livingYears")));
         animal.getAnimalSpecifications().setPsychotype(tempMap.get("psychoType").toUpperCase());

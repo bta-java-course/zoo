@@ -6,9 +6,6 @@ import org.btarikool.javacourse.animal.AnimalSpecifications;
 import org.btarikool.javacourse.animal.Price;
 import org.btarikool.javacourse.animal.genus.Fish;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Bony extends Fish implements Allergenic {
 
     public Bony() {

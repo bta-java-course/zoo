@@ -1,35 +1,29 @@
 package org.btarikool.javacourse.customer.panels;
 
-import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import org.btarikool.javacourse.*;
-import org.btarikool.javacourse.animal.genus.Genus;
-import org.btarikool.javacourse.animal.genus.species.Species;
 import org.btarikool.javacourse.config.Logger;
 import org.btarikool.javacourse.customer.Customer;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
-import java.util.List;
 import java.util.ResourceBundle;
 
-public class newCustomerController implements Initializable {
-
-    private final static String WRONG_ANSWER = "FIELD %s: You entered something else, but not %s.";
+public class NewCustomerController implements Initializable {
+    private static final String WRONG_ANSWER = "FIELD %s: You entered something else, but not %s.";
     ObservableList<Currency> currencyList = FXCollections.observableArrayList(Currency.values());
     ObservableList<Noise.Feature> featureList = FXCollections.observableArrayList(Noise.Feature.values());
     private boolean rightInput = true;
@@ -55,16 +49,9 @@ public class newCustomerController implements Initializable {
     private CheckBox checkBoxUrine;
     @FXML
     private CheckBox checkBoxSalvia;
-    @FXML
-    private CheckBox checkBoxUnexpected;
-    @FXML
-    private CheckBox checkBoxSharp;
-    @FXML
-    private CheckBox checkBoxMelodic;
 
     @FXML
     private void createCustomer() {
-
         Customer customer = new Customer();
         systemInName(customer);
         systemInPassword(customer);
@@ -74,8 +61,8 @@ public class newCustomerController implements Initializable {
         systemInAllergen(customer);
         if (featureList.contains(choiceBoxFeature.getSelectionModel().getSelectedItem()))
             systemInNoiseSensitivity(customer);
-        if (rightInput) addCustomerWithCheck(customer);
         if (rightInput) {
+            addCustomerWithCheck(customer);
             PetShop.getInstance().setLoggedInCustomer(customer);
             try {
                 changeSceneToLoggedInCustomerPanel();
@@ -88,20 +75,24 @@ public class newCustomerController implements Initializable {
     }
 
     private void addCustomerWithCheck(Customer customer) {
-        boolean duplicated= Collections.getInstance().getCustomersList().stream().
-                anyMatch(c ->
-                        c.getName().equals(customer.getName()) &&
-                                c.getSpecifications().getAge() == customer.getSpecifications().getAge());
-        if (duplicated) {
+        boolean isCustomerDuplicated = isCustomerDuplicated(customer);
+        if (isCustomerDuplicated) {
             labelError.setText("Customer with such Name and Age already exists!");
             rightInput = false;
             return;
         } else {
             Collections.getInstance().getCustomersList().add(customer);
-            labelError.setText("You are registered! Congrats!");
+            labelError.setText("You are registered! Congrat   s!");
             Logger.getInstance().logCustomersList(Collections.getInstance().getCustomersList());
         }
-        Collections.getInstance().getCustomersList().stream().forEach(System.out::println);
+        Collections.getInstance().getCustomersList().forEach(System.out::println);
+    }
+
+    private boolean isCustomerDuplicated(Customer customer) {
+        return Collections.getInstance().getCustomersList().stream().
+                anyMatch(c ->
+                        c.getName().equals(customer.getName()) &&
+                                c.getSpecifications().getAge() == customer.getSpecifications().getAge());
     }
 
     private void systemInName(Customer customer) {
@@ -119,17 +110,29 @@ public class newCustomerController implements Initializable {
             rightInput = false;
             return;
         }
-        else if (fieldPassword.getText().length() < 8) {
+        if (fieldPassword.getText().length() < 8) {
             labelError.setText("FIELD Password: Should be min. 8 symbols!");
             rightInput = false;
             return;
         }
-        else if (!fieldPassword.getText().matches("\\w+")) {
+        if (!fieldPassword.getText().matches("\\w+")) {
             labelError.setText("FIELD Password: May be only english cars!");
             rightInput = false;
             return;
         }
-        customer.setPassword(Base64.getDecoder().decode(fieldPassword.getText()));
+        MessageDigest password = getMD5Password();
+        customer.setPassword(password);
+    }
+
+    private MessageDigest getMD5Password() {
+        MessageDigest password = null;
+        try {
+            password = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        password.update(fieldPassword.getText().getBytes());
+        return password;
     }
 
     private void systemInAge(Customer customer) {
@@ -168,13 +171,12 @@ public class newCustomerController implements Initializable {
             rightInput = false;
             return;
         }
-        else if (fieldBudget.getText().matches("-\\d+|0")) {
+        if (fieldBudget.getText().matches("-\\d+|0")) {
             labelError.setText("FIELD BUDGET: Can not be minus value or 0!");
             rightInput = false;
             return;
         }
-        else
-            customer.getBudget().setAmount((Double.parseDouble(fieldBudget.getText().replaceAll(",", "."))));
+        customer.getBudget().setAmount((Double.parseDouble(fieldBudget.getText().replaceAll(",", "."))));
     }
 
     private void systemInCurrency(Customer customer) {
@@ -202,30 +204,23 @@ public class newCustomerController implements Initializable {
     private void choiceBoxFeatureOnAction() {
         if (choiceBoxFeature.getSelectionModel().getSelectedItem() instanceof Noise.Feature) fieldNoiseLevel.setEditable(true);
         }
-    @FXML
-    private void changeSceneToAdminsPanel() throws IOException {
-        File ne = new File(System.getProperty("user.dir").concat("/src/org/btarikool/javacourse/admin/adminsPane.fxml"));
-        Pane myPane = FXMLLoader.load(ne.toURL());
-        PetShopInterface.getMyStage().setTitle("PetShop Vol.1 / Admins Panel");
-        PetShopInterface.getMyStage().setScene(new Scene(myPane));
-    }
 
     @FXML
     private void changeSceneToPetShopPanel() throws IOException {
-        File ne = new File(System.getProperty("user.dir").concat("/src/org/btarikool/javacourse/petShopPane.fxml"));
-        Pane myPane = FXMLLoader.load(ne.toURL());
-        PetShopInterface.getMyStage().setTitle("PetShop Vol.1");
-        PetShopInterface.getMyStage().setScene(new Scene(myPane));
+        changeScene(PetShopController.PATH + "petShopPane.fxml", PetShopController.PET_SHOP_VOL_1);
     }
 
     @FXML
     private void changeSceneToLoggedInCustomerPanel() throws IOException {
-        File ne = new File(System.getProperty("user.dir").concat("/src/org/btarikool/javacourse/customer/panels/loggedInCustomerPane.fxml"));
-        Pane myPane = FXMLLoader.load(ne.toURL());
-        PetShopInterface.getMyStage().setTitle("PetShop Vol.1 / Customer's Panel");
-        PetShopInterface.getMyStage().setScene(new Scene(myPane));
+        changeScene(PetShopController.PATH + "customer/panels/loggedInCustomerPane.fxml", PetShopController.PET_SHOP_VOL_1 + " / Customer's Panel");
     }
 
+    private void changeScene(String s, String s2) throws IOException {
+        File ne = new File(PetShopController.PROPERTY.concat(s));
+        Pane myPane = FXMLLoader.load(ne.toURL());
+        PetShopInterface.getMyStage().setTitle(s2);
+        PetShopInterface.getMyStage().setScene(new Scene(myPane));
+    }
 
     public void initialize(URL location, ResourceBundle resources) {
         choiceBoxCurrency.setValue("");

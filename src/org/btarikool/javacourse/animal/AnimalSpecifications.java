@@ -56,7 +56,6 @@ public class AnimalSpecifications {
         if (allergen.length > 0 && !allergen[0].equals(""))
         Arrays.stream(allergen).
                 forEach(a -> this.allergens.add(Allergen.valueOf(a)));
-        else return;
     }
 
     public void setAllergens(Allergen ... allergen) {

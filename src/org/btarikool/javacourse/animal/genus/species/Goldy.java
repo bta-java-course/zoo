@@ -4,9 +4,6 @@ import org.btarikool.javacourse.animal.AnimalSpecifications;
 import org.btarikool.javacourse.animal.Price;
 import org.btarikool.javacourse.animal.genus.Fish;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Goldy extends Fish {
 
     public Goldy() {

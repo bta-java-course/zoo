@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="adminsPane" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.btarikool.javacourse.customer.panels.basketCustomerController">
+<GridPane fx:id="adminsPane" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.btarikool.javacourse.customer.panels.BasketCustomerController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -40,7 +40,7 @@
         <GridPane fx:id="mainGrid" GridPane.columnSpan="2" GridPane.rowIndex="3">
             <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
-                <ColumnConstraints hgrow="SOMETIMES" />
+                <ColumnConstraints />
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
@@ -50,9 +50,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-            <Button fx:id="buttonBuy" mnemonicParsing="false" onAction="#onButtonBuyAction" text="Buy" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
                 <Label fx:id="labelError" alignment="CENTER" contentDisplay="CENTER" maxHeight="20.0" maxWidth="600.0" minHeight="20.0" minWidth="600.0" prefHeight="20.0" prefWidth="600.0" textFill="RED" textOverrun="CENTER_ELLIPSIS" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                <Label text="Matching animals list to bye:" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                <Label fx:id="labelTopText" text="Basket:" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
             <GridPane fx:id="listGrid" GridPane.columnSpan="2" GridPane.rowIndex="2">
               <columnConstraints>
                 <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
@@ -68,6 +67,24 @@
                   <Insets left="30.0" right="30.0" />
                </GridPane.margin>
             </GridPane>
+            <GridPane GridPane.rowIndex="3">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+               <children>
+                  <Button fx:id="buttonRemove" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#removeFromBasket" text="Remove from basket" GridPane.halignment="RIGHT">
+                     <GridPane.margin>
+                        <Insets right="20.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button fx:id="buttonBuy" mnemonicParsing="false" onAction="#onButtonBuyAction" text="Buy" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Button>
+               </children>
+            </GridPane>
 
             </children>
         </GridPane>
@@ -79,6 +96,7 @@
                 <Insets left="20.0" right="20.0" />
             </GridPane.margin>
          <buttons>
+            <Button fx:id="buttonHistory" layoutX="560.0" layoutY="18.0" mnemonicParsing="false" onAction="#showPurchaseHistory" text="My purchase history" />
             <Button fx:id="buttonBackShopping" mnemonicParsing="false" onAction="#changeSceneToLoggedInCustomerPanel" text="Continue shopping" />
          </buttons>
         </ButtonBar>
@@ -100,9 +118,9 @@
           <RowConstraints maxHeight="109.39998779296874" minHeight="10.0" prefHeight="99.2" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="buttomBasket" blendMode="MULTIPLY" mnemonicParsing="false" textOverrun="CENTER_WORD_ELLIPSIS" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+            <Button fx:id="buttomBasket" onAction="#changeSceneToBasketCustomerPanel" blendMode="MULTIPLY" mnemonicParsing="false" textOverrun="CENTER_WORD_ELLIPSIS" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                <graphic>
-                  <ImageView fx:id="buttonBasket" cache="true" fitHeight="61.0" fitWidth="71.0" focusTraversable="true" onDragDetected="#changeSceneToBasketPanel" opacity="0.76" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="buttonBasket" cache="true" fitHeight="61.0" fitWidth="71.0" focusTraversable="true" opacity="0.76" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/shopping-basket-1509761-1277298.png" />
                      </image>

@@ -8,9 +8,6 @@ import org.btarikool.javacourse.animal.Noisy;
 import org.btarikool.javacourse.animal.Price;
 import org.btarikool.javacourse.animal.genus.Bird;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Parrot extends Bird  implements Allergenic, Noisy {
 
     public Parrot() {

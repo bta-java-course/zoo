@@ -1,44 +1,38 @@
 package org.btarikool.javacourse.customer.panels;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import org.btarikool.javacourse.*;
 import org.btarikool.javacourse.animal.Animal;
-import org.btarikool.javacourse.config.Logger;
 import org.btarikool.javacourse.customer.Customer;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
-public class loggedInCustomerController implements Initializable {
+public class LoggedInCustomerController implements Initializable {
 
-    private final static String WRONG_ANSWER = "FIELD %s: You entered something else, but not %s.";
     private Customer loggedInCustomer = PetShop.getInstance().getLoggedInCustomer();
     private Map<CheckBox, Animal> checkBoxAnimalMap = new HashMap<>();
     private double moneyLeft;
     @FXML
     private Label labelError;
+    @FXML
+    private Label labelTopText;
+    @FXML
+    private Button buttonAddToBasket;
     @FXML
     private Label labelMoneyLeft;
     @FXML
@@ -52,12 +46,6 @@ public class loggedInCustomerController implements Initializable {
     private void logOut() throws IOException {
         changeSceneToPetShopPanel();
         PetShop.getInstance().setLoggedInCustomer(null);
-    }
-
-    @FXML
-    private void addToBasket() throws IOException {
-
-        changeSceneToLoggedInCustomerPanel();
     }
 
     @FXML
@@ -84,6 +72,30 @@ public class loggedInCustomerController implements Initializable {
     }
 
     @FXML
+    private void showPurchaseHistory() {
+        listGrid.getChildren().clear();
+        loggedInCustomer.getPurchasedList().stream().
+                forEach(animal -> {
+                            Label label = getLabel(animal);
+                            listGrid.addRow(listGrid.impl_getRowCount(), new Label());
+                            listGrid.add(label, 1, listGrid.impl_getRowCount() - 1);
+                        }
+                );
+        labelTopText.setText("History:");
+        labelError.setText("");
+        buttonAddToBasket.setDisable(true);
+        buttonAddToBasket.setOpacity(0);
+    }
+
+    private Label getLabel(Animal a) {
+        Label label = new Label();
+        label.setText(a.toString() + "\n");
+        label.setId("nextLabel" + listGrid.impl_getRowCount());
+        label.setPadding(new Insets(0, 20, 0, 20));
+        return label;
+    }
+
+    @FXML
     private void addToBasketAction() {
         labelError.setText("");
         if (moneyLeft >= 0) {
@@ -99,7 +111,7 @@ public class loggedInCustomerController implements Initializable {
 
     private void onCheckBoxAction(Animal animal, CheckBox checkBox) {
         if (checkBox.isSelected()) {
-            moneyLeft -= animal.getPrice().getPrice();
+            moneyLeft = Math.round((moneyLeft - animal.getPrice().getPrice()) * 100) / 100;
             labelMoneyLeft.setText(moneyLeft + " EUR");
             if (moneyLeft < 0) {
                 labelMoneyLeft.setTextFill(Color.RED);
@@ -108,7 +120,7 @@ public class loggedInCustomerController implements Initializable {
         }
         else {
             labelMoneyLeft.setText(moneyLeft + animal.getPrice().getPrice() + " EUR");
-            moneyLeft += animal.getPrice().getPrice();
+            moneyLeft = Math.round((moneyLeft + animal.getPrice().getPrice()) * 100) / 100;
             if (moneyLeft >= 0) {
                 labelMoneyLeft.setTextFill(Color.BLACK);
                 labelMoney.setTextFill(Color.BLACK);
@@ -118,35 +130,25 @@ public class loggedInCustomerController implements Initializable {
 
     @FXML
     private void changeSceneToBasketPanel() throws IOException {
-        File ne = new File(System.getProperty("user.dir").concat("/src/org/btarikool/javacourse/customer/panels/basketCustomerPane.fxml"));
-        Pane myPane = FXMLLoader.load(ne.toURL());
-        PetShopInterface.getMyStage().setTitle("PetShop Vol.1 / Customer's Panel / Basket");
-        PetShopInterface.getMyStage().setScene(new Scene(myPane));
-    }
-
-    @FXML
-    private void changeSceneToAdminsPanel() throws IOException {
-        File ne = new File(System.getProperty("user.dir").concat("/src/org/btarikool/javacourse/admin/adminsPane.fxml"));
-        Pane myPane = FXMLLoader.load(ne.toURL());
-        PetShopInterface.getMyStage().setTitle("PetShop Vol.1 / Admins Panel");
-        PetShopInterface.getMyStage().setScene(new Scene(myPane));
+        changeScene("customer/panels/basketCustomerPane.fxml", PetShopController.PET_SHOP_VOL_1 + " / Customer's Panel / Basket");
     }
 
     @FXML
     private void changeSceneToPetShopPanel() throws IOException {
-        File ne = new File(System.getProperty("user.dir").concat("/src/org/btarikool/javacourse/petShopPane.fxml"));
-        Pane myPane = FXMLLoader.load(ne.toURL());
-        PetShopInterface.getMyStage().setTitle("PetShop Vol.1");
-        PetShopInterface.getMyStage().setScene(new Scene(myPane));
+        changeScene("petShopPane.fxml", PetShopController.PET_SHOP_VOL_1);
     }
 
+    @FXML
     private void changeSceneToLoggedInCustomerPanel() throws IOException {
-        File ne = new File(System.getProperty("user.dir").concat("/src/org/btarikool/javacourse/customer/panels/loggedInCustomerPane.fxml"));
-        Pane myPane = FXMLLoader.load(ne.toURL());
-        PetShopInterface.getMyStage().setTitle("PetShop Vol.1 / Customer's Panel");
-        PetShopInterface.getMyStage().setScene(new Scene(myPane));
+        changeScene("customer/panels/loggedInCustomerPane.fxml", PetShopController.PET_SHOP_VOL_1 + " / Customer's Panel");
     }
 
+    private void changeScene(String s, String petShopVol1) throws IOException {
+        File ne = new File(PetShopController.PROPERTY.concat(PetShopController.PATH + s));
+        Pane myPane = FXMLLoader.load(ne.toURL());
+        PetShopInterface.getMyStage().setTitle(petShopVol1);
+        PetShopInterface.getMyStage().setScene(new Scene(myPane));
+    }
 
     public void initialize(URL location, ResourceBundle resources) {
         labelCustomerName.setText(loggedInCustomer.getName());

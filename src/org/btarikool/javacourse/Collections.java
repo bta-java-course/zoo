@@ -8,6 +8,7 @@ import org.btarikool.javacourse.animal.genus.species.Species;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.ToDoubleFunction;
 import java.util.stream.Collectors;
 
 public class Collections {
@@ -89,7 +90,8 @@ public class Collections {
     }
 
     public Animal getAnimalById(int id) {
-        return getAnimalsList().stream().filter(a -> a.getId() == id).findAny().get();
+        Animal animal = getAnimalsList().stream().filter(a -> a.getId() == id).findAny().get();
+        return animal;
     }
 
     public double getAnimalsTotalCost() {

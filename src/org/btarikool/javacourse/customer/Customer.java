@@ -2,20 +2,19 @@ package org.btarikool.javacourse.customer;
 
 import org.btarikool.javacourse.Allergen;
 import org.btarikool.javacourse.Collections;
-import org.btarikool.javacourse.PetShop;
 import org.btarikool.javacourse.animal.Animal;
 
+import java.security.MessageDigest;
+import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class Customer {
 
     private String name;
     private Budget budget;
-    private byte[] password;
+    private MessageDigest password;
     private CustomerSpecifications specifications;
-    private Allergen allergen;
     private Set<Animal> purchasedList;
     private Basket basket;
 
@@ -30,14 +29,13 @@ public class Customer {
         this.name = name;
         this.budget = budget;
         this.specifications = specifications;
-        this.allergen = allergen;
     }
 
-    public byte[] getPassword() {
+    public MessageDigest getPassword() {
         return password;
     }
 
-    public void setPassword(byte[] password) {
+    public void setPassword(MessageDigest password) {
         this.password = password;
     }
 
@@ -77,7 +75,7 @@ public class Customer {
     public String toString() {
         return "Customer #" + Collections.getInstance().getCustomersList().indexOf(this) + "\n" +
                 "name: " + name
-                + "\npassword: " + password.toString()
+                + "\npassword: " + password.digest()
                 + budget
                 + specifications;
     }

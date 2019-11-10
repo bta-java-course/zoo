@@ -4,7 +4,6 @@ import org.btarikool.javacourse.Allergen;
 import org.btarikool.javacourse.animal.Animal;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Basket {
