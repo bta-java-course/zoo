@@ -54,21 +54,23 @@ public class LoggedInCustomerController implements Initializable {
                 filter(animal -> Comparator.getInstance().checkCompatibilityAnimalCustomer(loggedInCustomer, animal)).
                 filter(a -> !loggedInCustomer.getBasket().getBasketList().contains(a)).
                 forEach(a -> {
-                    Label label = new Label();
-                    label.setText(a.toString() + "\n");
-                    label.setId("nextLabel" + listGrid.impl_getRowCount());
-                    label.setPadding(new Insets(0, 20, 0, 20));
-                    CheckBox checkBox = new CheckBox();
-                    checkBox.setId("checkBox" + listGrid.impl_getRowCount());
-                    checkBox.setPadding(new Insets(0, 20, 10, 20));
-                    checkBox.setAlignment(Pos.TOP_RIGHT);
-                    checkBox.setOnAction(event -> onCheckBoxAction(a, checkBox));
+                    Label label = getLabel(a);
+                    CheckBox checkBox = getCheckBox(a);
                     checkBoxAnimalMap.put(checkBox, a);
                     listGrid.addRow(listGrid.impl_getRowCount(), new Label());
                     listGrid.add(label, 1, listGrid.impl_getRowCount() - 1);
                     listGrid.add(checkBox, 0, listGrid.impl_getRowCount() - 1);
                         }
                 );
+    }
+
+    private CheckBox getCheckBox(Animal a) {
+        CheckBox checkBox = new CheckBox();
+        checkBox.setId("checkBox" + listGrid.impl_getRowCount());
+        checkBox.setPadding(new Insets(0, 20, 10, 20));
+        checkBox.setAlignment(Pos.TOP_RIGHT);
+        checkBox.setOnAction(event -> onCheckBoxAction(a, checkBox));
+        return checkBox;
     }
 
     @FXML
