@@ -37,7 +37,7 @@ public class Settings {
             int speciesId = Integer.parseInt(speciesList.get(i));
             double price = Double.parseDouble(pricesList.get(i));
             Animal animal = Species.getNewAnimalBySpeciesId(speciesId,
-                                                    animalList.get(i), price, sexList.get(i));
+                    animalList.get(i), price, sexList.get(i));
             animals.add(animal);
         }
         return animals;

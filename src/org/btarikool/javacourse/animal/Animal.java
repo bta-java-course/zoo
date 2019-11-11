@@ -1,6 +1,5 @@
 package org.btarikool.javacourse.animal;
 
-import org.btarikool.javacourse.Allergie;
 import org.btarikool.javacourse.Noise;
 import org.btarikool.javacourse.animal.types.Allergene;
 

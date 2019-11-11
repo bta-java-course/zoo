@@ -1,12 +1,19 @@
 package org.btarikool.javacourse;
 
+import java.util.List;
+
 public class Customer {
+    String name;
+    int age;
     Budget budget;
-    Allergie allergie;
+    List<Allergie> allergies;
     Noise noiseSensitivity;
-    public Customer(double amount, Currency currency, Allergie allergie, Noise noiseSensitivity) {
+    public Customer(String name, int age, double amount, Currency currency,
+                    List<Allergie> allergies, Noise noiseSensitivity) {
+        this.name = name;
+        this.age = age;
         this.budget = new Budget(currency, amount);
-        this.allergie = allergie;
+        this.allergies = allergies;
         this.noiseSensitivity = noiseSensitivity;
 
     }
@@ -30,8 +37,10 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer{" +
+                "name=" + name +
+                "age=" + age +
                 "budget=" + budget +
-                ", allergie=" + allergie +
+                ", allergies=" + allergies +
                 ", noiseSensitivity=" + noiseSensitivity +
                 '}';
     }

@@ -1,6 +1,5 @@
 package org.btarikool.javacourse.animal.genes.reptiles;
 
-import org.btarikool.javacourse.Allergie;
 import org.btarikool.javacourse.animal.genes.Reptilia;
 import org.btarikool.javacourse.animal.types.Allergene;
 
