@@ -5,16 +5,24 @@ import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import org.btarikool.javacourse.animal.Animal;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class WebShop extends Application {
     public void start(Stage stage) {
         PetShop.initAnimals();
         GridPane pane = new GridPane();    // создаем область с абс.
+//        pane.setGridLinesVisible(true);
         pane.setPadding(new Insets(20)); // устанавливаем
         pane.setHgap(25);                    // внешние горизонтальные
         pane.setVgap(15);                    // и вертикальные отступы
@@ -53,6 +61,11 @@ public class WebShop extends Application {
         button.setPrefHeight(30);
         // высокая кнопка
         Label messageLbl = new Label(""); // надпись для поля ввода текста
+        List<Animal> compatibleAnimals = new ArrayList<>();
+        GridPane animalPane = new GridPane();    // создаем область с абс.animalPane.setBorder(border);
+        animalPane.setGridLinesVisible(true);
+        Label animalLbl = new Label("Animal:"); // надпись для поля ввода текста
+        animalPane.add(animalLbl, 0, 0); // добавляем надпись к области
 
         button.setOnAction(e -> {
                 List<String> allergiesList = new ArrayList<>();
@@ -65,20 +78,31 @@ public class WebShop extends Application {
                         ageInput.getText(),
                         budgetInput.getText(),
                         currencySelect.getValue().toString(),
-                        allergiesList);
+                        allergiesList, compatibleAnimals);
                 messageLbl.setText(message);
+                updateAnimalsPane(compatibleAnimals, animalPane);
 
         });
         pane.add(button, 0, rowIndex++, 2, 1);     // позиция: столбец 2, строк
         pane.add(messageLbl, 0, rowIndex, 4, 1); // добавляем надпись к области
 
+        pane.add(animalPane, 4, 0, 3, 10);
         Scene scene = new Scene(pane, 800, 600); // создаем эпизод с нашей областью
+
         stage.setScene(scene);              // добавляем его к сцене
         stage.setTitle("JavaFX Test");
         stage.show();                       // показываем сцену
 
 
     } // end start();
+
+
+    void updateAnimalsPane(List<Animal> compatibleAnimals, GridPane animalPane) {
+        compatibleAnimals.stream().forEach(
+
+        );
+
+    }
 
     public static void main(String[] args) {
         launch(args);  // Run this Application.

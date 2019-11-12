@@ -40,7 +40,8 @@ public class PetShop {
     }
     public static String createCustomer(String name, String age, String budget,
                                         String currencyStr,
-                                        List<String> allergies)  {
+                                        List<String> allergies,
+                                        List<Animal> compantibleAnimmals)  {
         String message = "CUSTOMER IS CREATING";
         boolean success = true;
         System.out.println(name);
@@ -71,7 +72,7 @@ public class PetShop {
         List<Allergie> allergList = new ArrayList<>();
         for (String allergie : allergies) {
             Allergie next = Allergie.valueOf(allergie);
-            allergList.add(next);
+            allergList.add(next)    ;
         }
 
         if (success) {
@@ -80,8 +81,8 @@ public class PetShop {
             customerList.add(newCustomer);
             activeCustomer = newCustomer;
             System.out.println(customerList);
-            List<Animal> animals = findAnimalsForCustomer();
-            System.out.println(animals);
+            compantibleAnimmals = findAnimalsForCustomer();
+            System.out.println(compantibleAnimmals);
         }
         System.out.println(allergies);
         return message;
@@ -91,7 +92,8 @@ public class PetShop {
         List<Animal> ret = new ArrayList<>();
         for (Animal animal : animalList) {
             if(budget != null
-                    && (animal.getPrice() <= budget.amount)) {
+                    && (animal.getPrice() <= budget.amount)
+                    && animal.isCustomerAllergieCompatible(activeCustomer)) {
                 ret.add(animal);
             }
         }

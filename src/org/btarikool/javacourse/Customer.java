@@ -34,6 +34,14 @@ public class Customer {
         }
     }
 
+    public List<Allergie> getAllergies() {
+        return allergies;
+    }
+
+    public void setAllergies(List<Allergie> allergies) {
+        this.allergies = allergies;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
