@@ -52,7 +52,6 @@ public class GuiListForCustomer {
 
             labelResponse.setTextFill(Color.web("#ff0000"));
             pane.add(labelResponse, 0, i, 3, 1);
-
             Button button1 = new Button("Buy");
             button1.setPrefWidth(100);
             GridPane.setHalignment(button1, HPos.RIGHT);
