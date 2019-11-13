@@ -57,12 +57,10 @@ public class GuiListForCustomer {
             GridPane.setHalignment(button1, HPos.RIGHT);
             pane.add(button1, 3, listOfSuitableAnimals().size() + 1);
             button1.setOnAction(e -> {
-
                 getBudget().setAmount(getBudget().getAmount() -
                         getPrice());
                 labelResponse.setText("Successfully purchased! Your budget now is: " + getBudget());
                pane.getChildren().remove(button1);
-
                 Button button2 = new Button("Exit");
                 button2.setPrefWidth(100);
                 GridPane.setHalignment(button2, HPos.RIGHT);
