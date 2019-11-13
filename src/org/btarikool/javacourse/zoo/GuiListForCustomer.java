@@ -1,15 +1,12 @@
 package org.btarikool.javacourse.zoo;
 
-import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import org.btarikool.javacourse.zoo.animal.types.Allergic;
 
 import java.util.ArrayList;
@@ -17,7 +14,7 @@ import java.util.List;
 
 public class GuiListForCustomer {
     private static List<RadioButton> rbList = new ArrayList<>();
-    private static Label labelresponse = new Label();
+    private static Label labelResponse = new Label();
 
     public static Scene nextScene() {
         int i = 1;
@@ -53,8 +50,8 @@ public class GuiListForCustomer {
                 i++;
             }
 
-            labelresponse.setTextFill(Color.web("#ff0000"));
-            pane.add(labelresponse, 0, i, 3, 1);
+            labelResponse.setTextFill(Color.web("#ff0000"));
+            pane.add(labelResponse, 0, i, 3, 1);
 
             Button button1 = new Button("Buy");
             button1.setPrefWidth(100);
@@ -64,7 +61,7 @@ public class GuiListForCustomer {
 
                 getBudget().setAmount(getBudget().getAmount() -
                         getPrice());
-                labelresponse.setText("Successfully purchased! Your budget now is: " + getBudget());
+                labelResponse.setText("Successfully purchased! Your budget now is: " + getBudget());
                pane.getChildren().remove(button1);
 
                 Button button2 = new Button("Exit");
@@ -75,9 +72,6 @@ public class GuiListForCustomer {
                     Platform.exit();
                     System.exit(0);
                 });
-
-                //write method on decreasing budget money
-
             });
 
         }
