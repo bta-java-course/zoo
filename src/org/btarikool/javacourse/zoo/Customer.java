@@ -9,6 +9,7 @@ import java.util.List;
 public class Customer {
     private Budget budget;
     private  String name;
+    private List<String> allergy;
     private  int age;
     private static List<Customer> listOfCustomers = new ArrayList<>();
 
@@ -76,14 +77,24 @@ public class Customer {
         this.age = age;
     }
 
+    public List<String> getAllergy() {
+        return allergy;
+    }
+
+    public void setAllergy(List<String> allergy) {
+        this.allergy = allergy;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
-                "name: " + this.name +
-                " age: " + this.age +
-                " budget: " + this.budget +
+                "budget=" + budget +
+                ", name='" + name + '\'' +
+                ", allergy='" + allergy + '\'' +
+                ", age=" + age +
                 '}';
     }
+
     public static void writeToLog() {
         StringBuilder toLog = new StringBuilder("Customers: \n");
         for (Customer check : listOfCustomers) {

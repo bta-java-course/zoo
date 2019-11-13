@@ -26,7 +26,7 @@ public class Settings {
 
             for (int i = 0; i < listOfNames.size(); i++) {
                 Animal animal = Animal.createAnimal(listOfNames.get(i), listOfSpecies.get(i),
-                        listOfSex.get(i), listOfPrices.get(i));
+                        listOfSex.get(i), Double.parseDouble(listOfPrices.get(i)));
                 list.add(animal);
             }
         } catch (Exception e) {

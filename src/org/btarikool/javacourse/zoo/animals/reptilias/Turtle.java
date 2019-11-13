@@ -11,6 +11,11 @@ causeAllergy();
     }
 
     @Override
+    public String getAllergyName() {
+        return allergyName;
+    }
+
+    @Override
     public void causeAllergy() {
         Allergies.Allergy theAllergy = Allergies.Allergy.URINE;
         this.allergyName = theAllergy.getAllergyName();
@@ -19,6 +24,6 @@ causeAllergy();
     @Override
     public String toString() {
         return super.toString() +
-                "allergy= '" + allergyName+ '\'';
+                ", allergy= '" + allergyName+ '\'';
     }
 }

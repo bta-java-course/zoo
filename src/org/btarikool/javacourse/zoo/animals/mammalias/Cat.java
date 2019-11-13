@@ -17,6 +17,10 @@ public class Cat extends Mammalia implements Allergic {
         this.allergyName = theAllergy.getAllergyName();
     }
 
+    public String getAllergyName() {
+        return allergyName;
+    }
+
     @Override
     public String toString() {
         return super.toString() +

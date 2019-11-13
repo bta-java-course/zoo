@@ -6,11 +6,21 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
-public class GraphicalInterface extends Application {
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class GraphicalInterfaceMain extends Application {
     private Customer customer;
 
     public void start(Stage stage) {
@@ -41,23 +51,34 @@ public class GraphicalInterface extends Application {
         ComboBox<String> currencyList = new ComboBox<>(FXCollections.observableArrayList("EUR", "USD", "YEN"));
         pane.add(currencyList, 1, 4);
 
+        List<CheckBox> allAllergies = new ArrayList<>();
         Label allergies = new Label("Allergies:");
         pane.add(allergies, 0, 5);
+
         Label allergyFur = new Label("Fur");
         pane.add(allergyFur, 1, 6);
-        CheckBox furCheck = new CheckBox();
+        CheckBox furCheck = new CheckBox("Fur");
+        furCheck.setAccessibleHelp("fur");
         GridPane.setHalignment(furCheck, HPos.RIGHT);
         pane.add(furCheck, 1, 6);
+        allAllergies.add(furCheck);
+
         Label allergyUrine = new Label("Urine");
         pane.add(allergyUrine, 1, 7);
-        CheckBox urineCheck = new CheckBox();
+        CheckBox urineCheck = new CheckBox("Urine");
+        urineCheck.setAccessibleHelp("urine");
         GridPane.setHalignment(urineCheck, HPos.RIGHT);
         pane.add(urineCheck, 1, 7);
+        allAllergies.add(urineCheck);
+
         Label allergySaliva = new Label("Saliva");
         pane.add(allergySaliva, 1, 8);
-        CheckBox salivaCheck = new CheckBox();
+        CheckBox salivaCheck = new CheckBox("Saliva");
+        salivaCheck.setAccessibleHelp("saliva");
         GridPane.setHalignment(salivaCheck, HPos.RIGHT);
         pane.add(salivaCheck, 1, 8);
+        allAllergies.add(salivaCheck);
+
 
         Button button = new Button("Send");
         button.setPrefWidth(100);
@@ -67,6 +88,12 @@ public class GraphicalInterface extends Application {
         labelresponse.setTextFill(Color.web("#ff0000"));
         pane.add(labelresponse, 0, 10, 3, 1);
         button.setOnAction(e -> {
+            List<String> allergiesList = new ArrayList<>();
+            for (CheckBox cb: allAllergies) {
+                if (cb.isSelected()) {
+                    allergiesList.add(cb.getAccessibleHelp());
+                }
+            }
             if (nameInput.getText().isEmpty()
                     || ageInput.getText().isEmpty()
                     || budgetInput.getText().isEmpty()
@@ -80,8 +107,14 @@ public class GraphicalInterface extends Application {
                 labelresponse.setText("Customer created!");
                 createCustomer(nameInput.getText(),
                         Integer.parseInt(ageInput.getText()),
-                        Double.parseDouble(budgetInput.getText()), currencyList.getValue());
+                        Double.parseDouble(budgetInput.getText()),
+                        currencyList.getValue(),
+                        allergiesList);
                 System.out.println(Customer.getListOfCustomers());
+                Scene nextScene = GuiListForCustomer.nextScene();
+                stage.setScene(nextScene);
+                stage.setTitle("test");
+                stage.show();
             }
             Customer.writeToLog();
         });
@@ -96,10 +129,11 @@ public class GraphicalInterface extends Application {
         launch(args);
     }
 
-    public void createCustomer(String theName, int theAge, double theAmount, String theCurrency) {
+    public void createCustomer(String theName, int theAge, double theAmount, String theCurrency, List<String> theAllergy) {
         Customer theCustomer = new Customer(theAmount, theCurrency);
         theCustomer.setName(theName);
         theCustomer.setAge(theAge);
+        theCustomer.setAllergy(theAllergy);
         Customer.getListOfCustomers().add(theCustomer);
     }
 

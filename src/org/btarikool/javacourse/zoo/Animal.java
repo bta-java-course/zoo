@@ -22,7 +22,7 @@ public abstract class Animal {
     // private static String toLog = "Animals: \n";
     private String nick;
     private String sex;
-    private String price;
+    private double price;
     private String species;
     private Settings settings = new Settings();
 
@@ -37,7 +37,7 @@ public abstract class Animal {
         return sex;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -53,7 +53,7 @@ public abstract class Animal {
         this.sex = sex;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -65,7 +65,7 @@ public abstract class Animal {
         return listOfAnimals;
     }
 
-    public static Animal createAnimal(String theNick, String theSpecies, String theSex, String thePrice) {
+    public static Animal createAnimal(String theNick, String theSpecies, String theSex, double thePrice) {
         Animal animal;
         switch (theSpecies.toLowerCase()) {
             case "frog":
